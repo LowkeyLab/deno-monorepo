@@ -1,6 +1,8 @@
 {
-  "workspace": ["website"],
+  "workspace": ["website", "aoc-24"],
   "imports": {
+    "@std/assert": "jsr:@std/assert@^1.0.11",
+    "@std/collections": "jsr:@std/collections@^1.0.10",
     "astro": "npm:astro"
   },
   "nodeModulesDir": "auto"
