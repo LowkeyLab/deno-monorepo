@@ -24,7 +24,7 @@ async function readInput(file: string) {
         return acc;
       },
       { list1: [], list2: [] } as Input
-    );
+    ) as ReadOnlyInput;
 }
 
 function getTotalDistance(input: ReadOnlyInput) {
@@ -53,7 +53,6 @@ function getSimilarityScore(input: ReadOnlyInput) {
 }
 
 const input = await readInput("day1.txt");
-const totalDistance = getTotalDistance(input);
 
-assertEquals(totalDistance, 1603498n);
+assertEquals(getTotalDistance(input), 1603498n);
 assertEquals(getSimilarityScore(input), 25574739n);
