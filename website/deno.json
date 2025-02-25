@@ -6,9 +6,13 @@
     "astro": "astro"
   },
   "compilerOptions": {
-    "types": [".astro/types.d.ts", ".astro/content.d.ts"]
+    "types": [".astro/types.d.ts", ".astro/content.d.ts"],
+    "jsx": "react-jsx",
+    "jsxImportSource": "preact"
   },
   "imports": {
-    "@astrojs/rss": "npm:@astrojs/rss@^4.0.11"
+    "@astrojs/preact": "npm:@astrojs/preact@^4.0.4",
+    "@astrojs/rss": "npm:@astrojs/rss@^4.0.11",
+    "preact": "npm:preact@^10.26.2"
   }
 }
