@@ -1,5 +1,5 @@
 import { assertEquals } from "@std/assert";
-import { isSafe, readInput } from "./day2.ts";
+import { countSafe, readInput } from "./day2.ts";
 
 // Get the directory of the current file
 const currentDir = new URL(".", import.meta.url).pathname;
@@ -16,49 +16,56 @@ async function getMainData() {
   return await readInput(mainPath);
 }
 
-Deno.test("Checks if level transitions are safe", async () => {
+Deno.test("Counts safe reports in test data", async () => {
   const reports = await getTestData();
-  assertEquals(isSafe(reports), false, "The test data should not be safe");
-});
-
-Deno.test("Evaluates safety of day2 data", async () => {
-  const reports = await getMainData();
-  // Note: Change the expected value below based on what you expect the result to be
   assertEquals(
-    isSafe(reports),
-    false,
-    "The day2 data should not be safe",
+    countSafe(reports),
+    2,
+    "Should count the correct number of safe reports in test data",
   );
 });
 
-// Test a known safe report
-Deno.test("Correctly identifies safe level transitions", () => {
+Deno.test("Counts safe reports in day2 data", async () => {
+  const reports = await getMainData();
+  // Update with expected safe report count
+  assertEquals(
+    countSafe(reports),
+    421,
+    "Should count the correct number of safe reports in day2 data",
+  );
+});
+
+// Test with known all-safe reports
+Deno.test("Correctly counts safe level transitions", () => {
   const safeReports = [
     [1, 2, 3, 4], // Consistently increasing with safe differences
     [9, 8, 7, 6], // Consistently decreasing with safe differences
   ];
-  assertEquals(isSafe(safeReports), true, "These transitions should be safe");
+  assertEquals(countSafe(safeReports), 2, "Should count both reports as safe");
 });
 
-// Test a report with unsafe transitions
-Deno.test("Correctly identifies unsafe level transitions due to large differences", () => {
-  const unsafeReports = [
+// Test with reports having unsafe transitions
+Deno.test("Correctly identifies reports with unsafe level differences", () => {
+  const mixedReports = [
     [1, 5, 7, 8], // First difference (5-1=4) is too large
+    [1, 2, 3, 4], // All safe
   ];
   assertEquals(
-    isSafe(unsafeReports),
-    false,
-    "Large differences should be unsafe",
+    countSafe(mixedReports),
+    1,
+    "Should count only the second report as safe",
   );
 });
 
-Deno.test("Correctly identifies unsafe level transitions due to direction changes", () => {
-  const unsafeReports = [
+Deno.test("Correctly identifies reports with unsafe direction changes", () => {
+  const mixedReports = [
     [1, 2, 1, 2], // Direction changes
+    [5, 4, 3, 2], // All decreasing (safe)
+    [1, 3, 2, 1], // Direction changes
   ];
   assertEquals(
-    isSafe(unsafeReports),
-    false,
-    "Direction changes should be unsafe",
+    countSafe(mixedReports),
+    1,
+    "Should count only the consistently decreasing report as safe",
   );
 });

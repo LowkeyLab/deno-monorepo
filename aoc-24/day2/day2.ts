@@ -39,34 +39,43 @@ export async function readInput(filePath: string): Promise<Reports> {
  * @param reports Collection of level reports to check
  * @returns true if all transitions are safe, false otherwise
  */
-export function isSafe(reports: Reports): boolean {
+export function countSafe(reports: Reports): number {
+  let safeReports = 0;
   for (const level of reports) {
     let direction = Directions.UNKNOWN;
+    let isSafe = true;
 
     for (let i = 1; i < level.length; i++) {
+      if (!differenceIsSafe(level[i], level[i - 1])) {
+        isSafe = false;
+      }
       if (level[i] > level[i - 1]) {
         if (direction === Directions.DECREASING) {
-          return false;
+          isSafe = false;
         }
         direction = Directions.INCREASING;
-        if (!differenceIsSafe(level[i - 1], level[i])) {
-          return false;
-        }
       } else if (level[i] < level[i - 1]) {
         if (direction === Directions.INCREASING) {
-          return false;
+          isSafe = false;
         }
         direction = Directions.DECREASING;
-        if (!differenceIsSafe(level[i], level[i - 1])) {
-          return false;
-        }
       }
     }
+    if (isSafe) safeReports++;
   }
-  return true;
+  return safeReports;
 }
 
-function differenceIsSafe(small: number, large: number) {
+/**
+ * Checks if the difference between two numbers is in the safe range (1-3).
+ * Automatically determines which number is smaller/larger.
+ * @param a First number
+ * @param b Second number
+ * @returns true if the difference is between 1 and 3, inclusive
+ */
+function differenceIsSafe(a: number, b: number): boolean {
+  const small = Math.min(a, b);
+  const large = Math.max(a, b);
   return large - small <= 3 && large - small >= 1;
 }
 
