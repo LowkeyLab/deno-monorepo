@@ -28,7 +28,7 @@ export async function readInput(file: string) {
         acc.list2.push(BigInt(line[1]));
         return acc;
       },
-      { list1: [], list2: [] } as Input
+      { list1: [], list2: [] } as Input,
     ) as ReadOnlyInput;
 }
 

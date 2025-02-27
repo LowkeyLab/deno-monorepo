@@ -1,5 +1,5 @@
 import { assertEquals } from "@std/assert";
-import { readInput, getTotalDistance, getSimilarityScore } from "./day1.ts";
+import { getSimilarityScore, getTotalDistance, readInput } from "./day1.ts";
 
 // Get the directory of the current file
 const currentDir = new URL(".", import.meta.url).pathname;
@@ -16,7 +16,7 @@ Deno.test(
   async () => {
     const input = await getTestInput();
     assertEquals(getTotalDistance(input), 1603498n);
-  }
+  },
 );
 
 Deno.test("Measures how similar the two data sets are", async () => {
