@@ -11,8 +11,13 @@ type ReadOnlyInput = {
     : Input[K];
 };
 
-async function readInput(file: string) {
-  const lines = await Deno.readTextFile(file);
+export async function readInput(file: string) {
+  // If the path is not absolute, resolve it relative to the current module
+  const filePath = file.startsWith("/")
+    ? file
+    : new URL(file, import.meta.url).pathname;
+
+  const lines = await Deno.readTextFile(filePath);
   return lines
     .split("\n")
     .filter((line) => line.length > 0)
@@ -27,7 +32,7 @@ async function readInput(file: string) {
     ) as ReadOnlyInput;
 }
 
-function getTotalDistance(input: ReadOnlyInput) {
+export function getTotalDistance(input: ReadOnlyInput) {
   const [list1, list2] = [input.list1.toSorted(), input.list2.toSorted()];
   return zip(list1, list2)
     .map(([first, second]) => {
@@ -40,7 +45,7 @@ function getTotalDistance(input: ReadOnlyInput) {
     .reduce((acc, distance) => acc + distance, 0n);
 }
 
-function getSimilarityScore(input: ReadOnlyInput) {
+export function getSimilarityScore(input: ReadOnlyInput) {
   const occurences = new Map<bigint, bigint>();
 
   for (const value of input.list2) {
@@ -51,8 +56,3 @@ function getSimilarityScore(input: ReadOnlyInput) {
     .map((value) => value * (occurences.get(value) ?? 0n))
     .reduce((acc, value) => acc + value, 0n);
 }
-
-const input = await readInput("day1.txt");
-
-assertEquals(getTotalDistance(input), 1603498n);
-assertEquals(getSimilarityScore(input), 25574739n);
