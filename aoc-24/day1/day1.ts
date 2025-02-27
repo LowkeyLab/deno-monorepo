@@ -1,5 +1,4 @@
 import { zip } from "@std/collections";
-import { assertEquals } from "@std/assert";
 type Input = {
   list1: bigint[];
   list2: bigint[];
