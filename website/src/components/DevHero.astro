@@ -39,7 +39,7 @@ const {
       <div
         class="w-48 md:w-64 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2 shadow-lg"
       >
-        <Image src={avatarSrc} alt={`${name} profile picture`} />
+        <Image src={avatarSrc} alt={`${name} profile`} loading={"eager"} />
       </div>
     </div>
 
@@ -58,6 +58,7 @@ const {
               target="_blank"
               rel="noreferrer"
               class="btn btn-circle btn-outline"
+              aria-label="GitHub Profile"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -80,6 +81,7 @@ const {
               target="_blank"
               rel="noreferrer"
               class="btn btn-circle btn-outline"
+              aria-label="LinkedIn Profile"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -95,7 +97,6 @@ const {
           )
         }
 
-        {/* New Mastodon social link */}
         {
           socials?.mastodon && (
             <a
