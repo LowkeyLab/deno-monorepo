@@ -2,10 +2,25 @@
   "$schema": "https://railway.com/railway.schema.json",
   "build": {
     "builder": "NIXPACKS",
-    "buildCommand": "deno task build",
-    "nixpacksConfigPath": "website/nixpacks.toml"
+    "buildCommand": "deno task build"
   },
   "deploy": {
-    "startCommand": "deno task preview"
+    "runtime": "V2",
+    "numReplicas": 1,
+    "startCommand": "deno task preview",
+    "limitOverride": {
+      "containers": {
+        "cpu": 1,
+        "memoryBytes": 1000000000
+      }
+    },
+    "sleepApplication": true,
+    "multiRegionConfig": {
+      "us-west2": {
+        "numReplicas": 1
+      }
+    },
+    "restartPolicyType": "ON_FAILURE",
+    "restartPolicyMaxRetries": 10
   }
 }
