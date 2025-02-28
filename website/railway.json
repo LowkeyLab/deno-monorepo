@@ -1,9 +1,20 @@
 {
   "$schema": "https://railway.com/railway.schema.json",
   "build": {
+    "nixpacksPlan": {
+      "phases": {
+        "setup": {
+          "nixPkgs": ["...", "deno"],
+          "nixPkgsArchive": "5135c59491985879812717f4c9fea69604e7f26f"
+        },
+        "install": {
+          "dependsOn": ["setup"],
+          "cmds": ["deno install --allow-scripts=npm:sharp@0.33.5"]
+        }
+      }
+    },
     "builder": "NIXPACKS",
-    "buildCommand": "deno task -f \"website\" build",
-    "nixpacksConfigPath": "website/nixpacks.toml"
+    "buildCommand": "deno task -f \"website\" build"
   },
   "deploy": {
     "runtime": "V2",
