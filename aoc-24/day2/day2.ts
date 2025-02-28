@@ -66,6 +66,43 @@ export function countSafe(reports: Reports): number {
   return safeReports;
 }
 
+export function countSafeWithDampener(reports: Reports): number {
+  let safeReports = 0;
+  for (const level of reports) {
+    let availableDampener = 1;
+    let direction = Directions.UNKNOWN;
+    let isSafe = true;
+
+    for (let i = 1; i < level.length; i++) {
+      if (!differenceIsSafe(level[i], level[i - 1])) {
+        if (availableDampener-- === 0) {
+          console.log("Unsafe level is ", level);
+          isSafe = false;
+        }
+      }
+      if (level[i] > level[i - 1]) {
+        if (direction === Directions.DECREASING) {
+          if (availableDampener-- === 0) {
+            console.log("Unsafe level is ", level);
+            isSafe = false;
+          }
+        }
+        direction = Directions.INCREASING;
+      } else if (level[i] < level[i - 1]) {
+        if (direction === Directions.INCREASING) {
+          if (availableDampener-- === 0) {
+            console.log("Unsafe level is ", level);
+            isSafe = false;
+          }
+        }
+        direction = Directions.DECREASING;
+      }
+    }
+    if (isSafe) safeReports++;
+  }
+  return safeReports;
+}
+
 /**
  * Checks if the difference between two numbers is in the safe range (1-3).
  * Automatically determines which number is smaller/larger.
