@@ -1,85 +1,30 @@
 ---
 import "../styles/global.css";
+import DevHero from "../components/DevHero.astro";
+import avatar from "../assets/avatar.jpeg";
 ---
 
 <html lang="en" data-theme="light">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
-    <title>Simple Astro Site</title>
+    <title>Developer Portfolio</title>
   </head>
   <body class="bg-base-200 min-h-screen">
-    <div class="container mx-auto px-4 py-8">
-      <!-- Main content card -->
-      <div class="card bg-base-100 shadow-xl max-w-2xl mx-auto">
-        <div class="card-body">
-          <h1 class="card-title text-3xl flex justify-center text-primary">
-            Welcome to My Simple Astro Site
-          </h1>
-          <p class="text-center">
-            This is a minimal Astro site running with Deno.
-          </p>
-
-          <!-- Time display as alert -->
-          <div class="alert alert-info mt-4">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              class="stroke-current shrink-0 w-6 h-6"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-              ></path>
-            </svg>
-            <div>
-              Current time: <span class="font-medium"
-                >{new Date().toLocaleTimeString()}</span
-              >
-            </div>
-          </div>
-
-          <!-- Feature cards in grid -->
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6">
-            <div
-              class="card bg-base-100 border border-base-300 hover:shadow-md transition-all"
-            >
-              <div class="card-body p-4">
-                <h2 class="card-title text-lg text-secondary">Simple Setup</h2>
-                <p class="text-sm">
-                  Quick and easy deployment with Astro and Deno
-                </p>
-              </div>
-            </div>
-
-            <div
-              class="card bg-base-100 border border-base-300 hover:shadow-md transition-all"
-            >
-              <div class="card-body p-4">
-                <h2 class="card-title text-lg text-secondary">
-                  Tailwind & DaisyUI
-                </h2>
-                <p class="text-sm">Beautiful design with component classes</p>
-              </div>
-            </div>
-          </div>
-
-          <!-- Call to action button -->
-          <div class="flex justify-center mt-6">
-            <button class="btn btn-primary">Get Started</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Footer -->
-      <footer class="footer footer-center mt-8 text-base-content">
-        <div>
-          <p>Built with Astro and DaisyUI</p>
-        </div>
-      </footer>
-    </div>
+    <!-- Hero Section -->
+    <DevHero
+      name="Tim Tran"
+      title="Software Engineer"
+      description="I like to think of myself as a 1x engineer who creates 10x engineers. I'm passionate about building tools that help developers iterate faster and more efficiently. In my free time I experiment with toolchains and software ecosystems. I will talk your ears off about the JVM, Rust, and TypeScript."
+      avatarSrc={avatar}
+      socials={{
+        github: "https://github.com/tacascer",
+        linkedin: "https://www.linkedin.com/in/timtran2018/",
+      }}
+      ctaText="View Projects"
+      ctaLink="#projects"
+      secondaryCtaText="Get in Touch"
+      secondaryCtaLink="#contact"
+    />
   </body>
 </html>
