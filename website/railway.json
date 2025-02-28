@@ -2,7 +2,8 @@
   "$schema": "https://railway.com/railway.schema.json",
   "build": {
     "builder": "NIXPACKS",
-    "buildCommand": "deno task build"
+    "buildCommand": "deno task build",
+    "nixpacksConfigPath": "website/nixpacks.toml"
   },
   "deploy": {
     "runtime": "V2",
