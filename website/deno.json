@@ -3,7 +3,11 @@
   "exports": "./mod.ts",
   "tasks": {
     "dev": "astro dev",
-    "build": "astro build",
+    "install": "deno install --allow-scripts=npm:sharp@0.33.5",
+    "build": {
+      "command": "astro build",
+      "dependencies": ["install"]
+    },
     "preview": "astro preview"
   }
 }
