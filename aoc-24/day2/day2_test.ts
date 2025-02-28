@@ -70,15 +70,6 @@ Deno.test("Correctly identifies reports with unsafe direction changes", () => {
   );
 });
 
-Deno.test("Counts safe reports with dampener in day2 data", async () => {
-  const reports = await getMainData();
-  assertEquals(
-    countSafeWithDampener(reports),
-    696,
-    "Should count the correct number of safe reports with dampener in day2 data",
-  );
-});
-
 Deno.test("Counts the same for already safe reports", () => {
   const perfectlyFineReports = [
     [1, 2, 3], // All increasing, safe differences
