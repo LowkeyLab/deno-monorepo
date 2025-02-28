@@ -10,7 +10,8 @@
       }
     },
     "builder": "NIXPACKS",
-    "buildCommand": "deno task -f \"website\" build"
+    "buildCommand": "deno task -f \"website\" build",
+    "nixpacksConfigPath": "website/nixpacks.toml"
   },
   "deploy": {
     "runtime": "V2",
