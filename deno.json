@@ -7,6 +7,7 @@
     "@tailwindcss/vite": "npm:@tailwindcss/vite@^4.0.9",
     "astro": "npm:astro@^5.4.0",
     "daisyui": "npm:daisyui@^5.0.0-beta.9",
+    "sharp": "npm:sharp@^0.33.5",
     "svelte": "npm:svelte@^5.20.5",
     "tailwindcss": "npm:tailwindcss@^4.0.9"
   },
