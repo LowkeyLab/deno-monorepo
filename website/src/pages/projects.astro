@@ -1,0 +1,122 @@
+---
+import "../styles/global.css";
+import ProjectCard from "../components/ProjectCard.astro";
+import dummyImage from "../assets/dummy.png"; // Import the image as ImageMetadata
+
+// Sample project data with imported image
+const projects = [
+  {
+    title: "Developer Portfolio",
+    description:
+      "A personal portfolio website built with Astro, Tailwind, and DaisyUI.",
+    tags: ["Astro", "Tailwind", "DaisyUI"],
+    image: dummyImage, // Use the imported image
+    links: {
+      github: "https://github.com/username/portfolio",
+      demo: "https://portfolio.example.com",
+    },
+  },
+  {
+    title: "Advent of Code Solutions",
+    description:
+      "My solutions to Advent of Code challenges using Deno and TypeScript.",
+    tags: ["Deno", "TypeScript", "Algorithms"],
+    image: dummyImage, // Use the imported image
+    links: {
+      github: "https://github.com/username/aoc-solutions",
+    },
+  },
+  {
+    title: "Build Tool Optimizer",
+    description:
+      "A tool that helps improve build times for Java and Kotlin projects.",
+    tags: ["Java", "Kotlin", "Gradle", "CI/CD"],
+    image: dummyImage, // Use the imported image
+    links: {
+      github: "https://github.com/username/build-optimizer",
+      website: "https://build-optimizer.dev",
+    },
+  },
+  {
+    title: "Developer Productivity Dashboard",
+    description:
+      "A dashboard for tracking and improving developer productivity metrics.",
+    tags: ["React", "TypeScript", "Data Visualization"],
+    image: dummyImage, // Use the imported image
+    links: {
+      github: "https://github.com/username/dev-productivity",
+      demo: "https://dev-dashboard.example.com",
+    },
+  },
+];
+---
+
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta
+      name="description"
+      content="Projects and work by Tim Tran - Software Engineer"
+    />
+    <title>Projects | Tim Tran</title>
+  </head>
+  <body class="bg-base-200 min-h-screen">
+    <main class="container mx-auto px-4 py-12">
+      <header class="mb-12 text-center">
+        <h1 class="text-4xl font-bold text-base-content mb-3">My Projects</h1>
+        <p class="text-xl text-base-content/80 max-w-3xl mx-auto">
+          A collection of my recent work, open source contributions, and side
+          projects. Each project reflects different aspects of my skills and
+          interests in software development.
+        </p>
+      </header>
+
+      <!-- Filter/Category section (optional) -->
+      <div class="flex justify-center mb-10">
+        <div class="btn-group">
+          <button class="btn btn-sm btn-active">All</button>
+          <button class="btn btn-sm">Web Dev</button>
+          <button class="btn btn-sm">Tools</button>
+          <button class="btn btn-sm">Open Source</button>
+        </div>
+      </div>
+
+      <!-- Projects Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {
+          projects.map((project) => (
+            <ProjectCard
+              title={project.title}
+              description={project.description}
+              tags={project.tags}
+              image={project.image}
+              links={project.links}
+            />
+          ))
+        }
+      </div>
+
+      <!-- Call to Action -->
+      <div class="mt-16 text-center">
+        <h2 class="text-2xl font-bold mb-4">Interested in working together?</h2>
+        <a href="mailto:timdttran2000@gmail.com" class="btn btn-primary"
+          >Get in Touch</a
+        >
+      </div>
+    </main>
+
+    <footer class="footer footer-center p-10 bg-base-300 text-base-content">
+      <div>
+        <p>
+          © {new Date().getFullYear()} Tim Tran - Built with Astro and DaisyUI
+        </p>
+        <div class="flex gap-4 mt-2">
+          <a href="/" class="link link-hover">Home</a>
+          <a href="/projects" class="link link-hover font-medium">Projects</a>
+          <a href="#contact" class="link link-hover">Contact</a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
