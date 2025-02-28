@@ -1,6 +1,5 @@
 {
   "name": "@scope/website",
-  "exports": "./mod.ts",
   "tasks": {
     "dev": "astro dev",
     "build": "astro build",

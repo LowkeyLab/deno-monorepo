@@ -1,2 +1,11 @@
+providers = []
+[start]
+cmd = "deno task -f \"website\" preview"
 [phases.setup]
+nixPkgs = ["deno"]
 nixpkgsArchive = "5135c59491985879812717f4c9fea69604e7f26f"
+[phases.build]
+cmds = [
+    "deno install --allow-scripts=npm:sharp@0.33.5",
+    "deno task -f \"website\" build",
+]
