@@ -9,6 +9,7 @@
     "npm:@tailwindcss/vite@^4.0.9": "4.0.9_vite@6.2.0__lightningcss@1.29.1_lightningcss@1.29.1",
     "npm:astro@5.4.0": "5.4.0_vite@6.2.0_zod@3.24.2",
     "npm:astro@^5.4.0": "5.4.0_vite@6.2.0_zod@3.24.2",
+    "npm:daisyui@^5.0.0-beta.9": "5.0.0-beta.9",
     "npm:preact@^10.26.2": "10.26.2",
     "npm:tailwindcss@^4.0.9": "4.0.9"
   },
@@ -1042,6 +1043,9 @@
     },
     "cssesc@3.0.0": {
       "integrity": "sha512-/Tb/JcjK111nNScGob5MNtsntNM1aCNUDipB/TkwZFhyDrrE47SOx/18wF2bbjgc3ZzCSKW1T5nt5EbFoAz/Vg=="
+    },
+    "daisyui@5.0.0-beta.9": {
+      "integrity": "sha512-V+To8o1O8AaxSgdk9QrjXyq/e1AhdW1Z6oUI5iwrOjPs8avM7VQNqoTDCAE5rM0NcMbUfmFgQH8h8guiQ5QPOA=="
     },
     "debug@4.4.0": {
       "integrity": "sha512-6WTZ/IxCY/T6BALoZHaE4ctp9xm+Z5kY/pzYaCHRFeyVhojxlrm+46y68HA6hr0TcwEssoxNiDEUJQjfPZ/RYA==",
@@ -2725,6 +2729,7 @@
       "jsr:@std/collections@^1.0.10",
       "npm:@tailwindcss/vite@^4.0.9",
       "npm:astro@^5.4.0",
+      "npm:daisyui@^5.0.0-beta.9",
       "npm:tailwindcss@^4.0.9"
     ],
     "members": {
