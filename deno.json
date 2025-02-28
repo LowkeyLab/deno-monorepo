@@ -1,9 +1,9 @@
 {
-  "workspace": ["astro-tutorial", "aoc-24"],
+  "workspace": ["astro-tutorial", "aoc-24", "website"],
   "imports": {
     "@std/assert": "jsr:@std/assert@^1.0.11",
     "@std/collections": "jsr:@std/collections@^1.0.10",
-    "astro": "npm:astro@^5.3.1"
+    "astro": "npm:astro@^5.4.0"
   },
   "nodeModulesDir": "auto"
 }

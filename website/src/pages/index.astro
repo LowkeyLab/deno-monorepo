@@ -1,0 +1,32 @@
+---
+// No imports or variables needed for this simple page
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Simple Astro Site</title>
+  </head>
+  <body>
+    <main>
+      <h1>Welcome to My Simple Astro Site</h1>
+      <p>This is a minimal Astro site running with Deno.</p>
+      <p>Current time: {new Date().toLocaleTimeString()}</p>
+    </main>
+  </body>
+</html>
+
+<style>
+  body {
+    font-family: system-ui, sans-serif;
+    max-width: 650px;
+    margin: 0 auto;
+    padding: 2rem;
+    line-height: 1.5;
+  }
+
+  h1 {
+    color: #4c1d95;
+  }
+</style>
