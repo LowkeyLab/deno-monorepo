@@ -7,19 +7,20 @@ export async function getStaticPaths() {
   const projects = await getCollection("projects");
   return projects.map((project) => ({
     params: { project: project.id },
+    props: { project },
   }));
 }
 
-const entry = await getEntry("projects", Astro.params.project);
-const { Content } = await render(entry);
+const { project } = Astro.props;
+const { Content } = await render(project);
 ---
 
 <html lang="en" data-theme="light">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
-    <meta name="description" content={entry.data.description} />
-    <title>{entry.data.title} | Tim Tran</title>
+    <meta name="description" content={project.data.description} />
+    <title>{project.data.title} | Tim Tran</title>
   </head>
   <body class="bg-base-200 min-h-screen">
     <Content />
