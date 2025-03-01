@@ -6,7 +6,7 @@ WORKDIR /app
 COPY . .
 
 # Build the app
-RUN deno install
+RUN deno install --allow-scripts=npm:sharp@0.33.5
 
 RUN deno task -f "website" build
 
