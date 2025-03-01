@@ -11,8 +11,8 @@
     "jsxImportSource": "preact"
   },
   "imports": {
-    "@astrojs/preact": "npm:@astrojs/preact@^4.0.4",
+    "@astrojs/preact": "npm:@astrojs/preact@^4.0.5",
     "@astrojs/rss": "npm:@astrojs/rss@^4.0.11",
-    "preact": "npm:preact@^10.26.2"
+    "preact": "npm:preact@^10.26.4"
   }
 }
