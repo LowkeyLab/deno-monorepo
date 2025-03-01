@@ -3,15 +3,18 @@ FROM denoland/deno:latest AS builder
 # Create working directory
 WORKDIR /app
 
-COPY deno.json .
-COPY website/ ./website/
+COPY . .
 
 # Build the app
 RUN deno install
+
 RUN deno task -f "website" build
 
 FROM denoland/deno:latest
-WORKDIR /app
-COPY --from=builder /app .
+
+WORKDIR /app/website
+
+COPY --from=builder /app/website .
+
 # Run the app
-ENTRYPOINT ["deno", "task", "-f", "website", "preview"]
+ENTRYPOINT ["deno", "run", "--allow-read", "--allow-net", "--allow-env", "src/server.ts"]
