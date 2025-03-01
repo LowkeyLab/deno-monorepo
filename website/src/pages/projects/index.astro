@@ -1,32 +1,24 @@
 ---
-import "../styles/global.css";
-import ProjectCard from "../components/ProjectCard.astro";
-import dummyImage from "../assets/dummy.png"; // Import the image as ImageMetadata
+import "../../styles/global.css";
+import ProjectCard from "../../components/ProjectCard.astro";
+import dummyImage from "../../assets/dummy.png";
+import { getCollection } from "astro:content";
 
-// Sample project data with imported image
-const projects = [
-  {
-    title: "Developer Portfolio",
-    description:
-      "A personal portfolio website built with Astro, Tailwind, and DaisyUI.",
-    tags: ["Astro", "Tailwind", "DaisyUI"],
-    image: dummyImage, // Use the imported image
-    links: {
-      github: "https://github.com/LowkeyLab/deno-monorepo/tree/main/website",
-      demo: "https://www.tacascer.com",
-    },
-  },
-  {
-    title: "Advent of Code Solutions",
-    description:
-      "My solutions to Advent of Code challenges using Deno and TypeScript.",
-    tags: ["Deno", "TypeScript", "Algorithms"],
-    image: dummyImage, // Use the imported image
-    links: {
-      github: "https://github.com/LowkeyLab/deno-monorepo/tree/main/aoc-24",
-    },
-  },
-];
+// Get all projects from the collection
+const projects = await getCollection("projects");
+
+// Sort by featured projects first
+const sortedProjects = projects.sort((a, b) => {
+  // Featured projects come first
+  if (a.data.featured && !b.data.featured) return -1;
+  if (!a.data.featured && b.data.featured) return 1;
+
+  // Then sort alphabetically by title
+  return a.data.title.localeCompare(b.data.title);
+});
+
+// Extract all unique tags for filtering
+const allTags = [...new Set(projects.flatMap((project) => project.data.tags))];
 ---
 
 <html lang="en" data-theme="light">
@@ -50,26 +42,23 @@ const projects = [
         </p>
       </header>
 
-      <!-- Filter/Category section (optional) -->
-      <div class="flex justify-center mb-10">
-        <div class="btn-group">
-          <button class="btn btn-sm btn-active">All</button>
-          <button class="btn btn-sm">Web Dev</button>
-          <button class="btn btn-sm">Tools</button>
-          <button class="btn btn-sm">Open Source</button>
-        </div>
+      <!-- Filter/Category section -->
+      <div class="flex justify-center mb-10 flex-wrap gap-2">
+        <button class="btn btn-sm btn-active">All</button>
+        {allTags.map((tag) => <button class="btn btn-sm">{tag}</button>)}
       </div>
 
       <!-- Projects Grid -->
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {
-          projects.map((project) => (
+          sortedProjects.map((project) => (
             <ProjectCard
-              title={project.title}
-              description={project.description}
-              tags={project.tags}
-              image={project.image}
-              links={project.links}
+              title={project.data.title}
+              description={project.data.description}
+              tags={project.data.tags}
+              image={dummyImage}
+              links={project.data.links}
+              slug={project.id}
             />
           ))
         }
@@ -78,9 +67,9 @@ const projects = [
       <!-- Call to Action -->
       <div class="mt-16 text-center">
         <h2 class="text-2xl font-bold mb-4">Interested in working together?</h2>
-        <a href="mailto:timdttran2000@gmail.com" class="btn btn-primary"
-          >Get in Touch</a
-        >
+        <a href="mailto:timdttran2000@gmail.com" class="btn btn-primary">
+          Get in Touch
+        </a>
       </div>
     </main>
 

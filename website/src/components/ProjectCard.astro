@@ -5,8 +5,9 @@ interface Props {
   title: string;
   description: string;
   tags: string[];
-  image?: ImageMetadata; // Updated to only accept ImageMetadata
+  image?: ImageMetadata;
   imageAlt?: string;
+  slug?: string; // We'll keep the prop name the same for backward compatibility
   links: {
     github?: string;
     demo?: string;
@@ -20,6 +21,7 @@ const {
   tags,
   image,
   imageAlt = "Project screenshot",
+  slug,
   links,
 } = Astro.props;
 ---
@@ -40,7 +42,17 @@ const {
   }
 
   <div class="card-body">
-    <h2 class="card-title text-primary font-bold">{title}</h2>
+    <h2 class="card-title text-primary font-bold">
+      {
+        slug ? (
+          <a href={`/projects/${slug}`} class="hover:underline">
+            {title}
+          </a>
+        ) : (
+          title
+        )
+      }
+    </h2>
     <p>{description}</p>
 
     <div class="flex flex-wrap gap-1 mt-2">
@@ -121,6 +133,14 @@ const {
               />
             </svg>
             Website
+          </a>
+        )
+      }
+
+      {
+        slug && (
+          <a href={`/projects/${slug}`} class="btn btn-sm btn-primary">
+            View Details
           </a>
         )
       }

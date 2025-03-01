@@ -1,0 +1,30 @@
+---
+import { getEntry, render } from "astro:content";
+import "../../styles/global.css";
+import { getCollection } from "astro:content";
+
+// Generate static paths for all projects
+export async function getStaticPaths() {
+  const projects = await getCollection("projects");
+  return projects.map((project) => ({
+    params: { project: project.id },
+  }));
+}
+
+// Get the project for this page
+const entry = await getEntry("projects", Astro.params.project);
+const { Content } = await render(entry);
+---
+
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={entry.data.description} />
+    <title>{entry.data.title} | Tim Tran</title>
+  </head>
+  <body class="bg-base-200 min-h-screen">
+    <Content />
+    <!-- ...existing code... -->
+  </body>
+</html>

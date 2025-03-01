@@ -17,6 +17,8 @@
     "npm:@astrojs/rss@^4.0.11": "4.0.11",
     "npm:@astrojs/svelte@^7.0.5": "7.0.5_astro@5.4.1__vite@6.2.0__zod@3.24.2_svelte@5.20.5__acorn@8.14.0_typescript@5.8.2_vite@6.2.0",
     "npm:@tailwindcss/vite@^4.0.9": "4.0.9_vite@6.2.0__lightningcss@1.29.1_lightningcss@1.29.1",
+    "npm:astro@*": "5.4.1_vite@6.2.0_zod@3.24.2",
+    "npm:astro@5.4.1": "5.4.1_vite@6.2.0_zod@3.24.2",
     "npm:astro@^5.4.1": "5.4.1_vite@6.2.0_zod@3.24.2",
     "npm:daisyui@5": "5.0.0",
     "npm:preact@^10.26.4": "10.26.4",
@@ -898,7 +900,7 @@
         "shiki",
         "tinyexec",
         "tinyglobby",
-        "tsconfck",
+        "tsconfck@3.1.5_typescript@5.8.2",
         "ultrahtml",
         "unist-util-visit",
         "unstorage",
@@ -963,7 +965,7 @@
         "shiki",
         "tinyexec",
         "tinyglobby",
-        "tsconfck",
+        "tsconfck@3.1.5",
         "ultrahtml",
         "unist-util-visit",
         "unstorage",
@@ -2556,6 +2558,9 @@
     },
     "trough@2.2.0": {
       "integrity": "sha512-tmMpK00BjZiUyVyvrBK7knerNgmgvcV/KLVyuma/SC+TQN167GrMRciANTz09+k3zW8L8t60jWO1GpfkZdjTaw=="
+    },
+    "tsconfck@3.1.5": {
+      "integrity": "sha512-CLDfGgUp7XPswWnezWwsCRxNmgQjhYq3VXHM0/XIRxhVrKw0M1if9agzryh1QS3nxjCROvV+xWxoJO1YctzzWg=="
     },
     "tsconfck@3.1.5_typescript@5.8.2": {
       "integrity": "sha512-CLDfGgUp7XPswWnezWwsCRxNmgQjhYq3VXHM0/XIRxhVrKw0M1if9agzryh1QS3nxjCROvV+xWxoJO1YctzzWg==",
