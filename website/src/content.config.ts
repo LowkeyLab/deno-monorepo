@@ -2,7 +2,6 @@ import { defineCollection, z } from "astro:content";
 import { glob } from "astro/loaders";
 
 const projects = defineCollection({
-  // Update the path to point to content directory in project root
   loader: glob({ pattern: "**/*.md", base: "./content/projects" }),
   schema: z.object({
     title: z.string(),
@@ -17,7 +16,6 @@ const projects = defineCollection({
   }),
 });
 
-// Define the schema for the projects collection
 export const collections = {
   projects,
 };
