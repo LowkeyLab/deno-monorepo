@@ -1,31 +1,24 @@
 ---
-import "../styles/global.css";
+import Layout from "../layouts/Layout.astro";
 import DevHero from "../components/DevHero.astro";
 import avatar from "../assets/avatar.jpeg";
 ---
 
-<html lang="en" data-theme="light">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <title>Developer Portfolio</title>
-  </head>
-  <body class="bg-base-200 min-h-screen">
-    <!-- Hero Section -->
-    <DevHero
-      name="Tim Tran"
-      title="Software Engineer"
-      description="I like to think of myself as a 1x engineer who creates 10x engineers. I'm passionate about building tools that help developers iterate faster and more efficiently. I'm mainly immersed in Java, Kotlin, and TypeScript. In my free time I experiment with toolchains and software ecosystems. I will talk your ears off about build systems, CI pipelines, and deployment methodologies."
-      avatarSrc={avatar}
-      socials={{
-        github: "https://github.com/tacascer",
-        linkedin: "https://www.linkedin.com/in/timtran2018/",
-        mastodon: "https://mastodon.social/@tacascer", // Example Mastodon URL
-      }}
-      ctaText="View Projects"
-      ctaLink="/projects"
-      secondaryCtaText="Contact Me"
-      secondaryCtaLink="mailto:timdttran2000@gmail.com"
-    />
-  </body>
-</html>
+<Layout title="Tim Tran - Software Engineer">
+  <!-- Hero Section -->
+  <DevHero
+    name="Tim Tran"
+    title="Software Engineer"
+    description="I like to think of myself as a 1x engineer who creates 10x engineers. I'm passionate about building tools that help developers iterate faster and more efficiently. I'm mainly immersed in Java, Kotlin, and TypeScript. In my free time I experiment with toolchains and software ecosystems. I will talk your ears off about build systems, CI pipelines, and deployment methodologies."
+    avatarSrc={avatar}
+    socials={{
+      github: "https://github.com/tacascer",
+      linkedin: "https://www.linkedin.com/in/timtran2018/",
+      mastodon: "https://mastodon.social/@tacascer",
+    }}
+    ctaText="View Projects"
+    ctaLink="/projects"
+    secondaryCtaText="Contact Me"
+    secondaryCtaLink="mailto:timdttran2000@gmail.com"
+  />
+</Layout>

@@ -1,5 +1,5 @@
 ---
-import "../../styles/global.css";
+import Layout from "../../layouts/Layout.astro";
 import ProjectCard from "../../components/ProjectCard.astro";
 import dummyImage from "../../assets/dummy.png";
 import { getCollection } from "astro:content";
@@ -9,11 +9,8 @@ const projects = await getCollection("projects");
 
 // Sort by featured projects first
 const sortedProjects = projects.sort((a, b) => {
-  // Featured projects come first
   if (a.data.featured && !b.data.featured) return -1;
   if (!a.data.featured && b.data.featured) return 1;
-
-  // Then sort alphabetically by title
   return a.data.title.localeCompare(b.data.title);
 });
 
@@ -21,69 +18,46 @@ const sortedProjects = projects.sort((a, b) => {
 const allTags = [...new Set(projects.flatMap((project) => project.data.tags))];
 ---
 
-<html lang="en" data-theme="light">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <meta
-      name="description"
-      content="Projects and work by Tim Tran - Software Engineer"
-    />
-    <title>Projects | Tim Tran</title>
-  </head>
-  <body class="bg-base-200 min-h-screen">
-    <main class="container mx-auto px-4 py-12">
-      <header class="mb-12 text-center">
-        <h1 class="text-4xl font-bold text-base-content mb-3">My Projects</h1>
-        <p class="text-xl text-base-content/80 max-w-3xl mx-auto">
-          A collection of my recent work, open source contributions, and side
-          projects. Each project reflects different aspects of my skills and
-          interests in software development.
-        </p>
-      </header>
+<Layout
+  title="Projects | Tim Tran"
+  description="Projects and work by Tim Tran - Software Engineer"
+>
+  <header class="mb-12 text-center">
+    <h1 class="text-4xl font-bold text-base-content mb-3">My Projects</h1>
+    <p class="text-xl text-base-content/80 max-w-3xl mx-auto">
+      A collection of my recent work, open source contributions, and side
+      projects. Each project reflects different aspects of my skills and
+      interests in software development.
+    </p>
+  </header>
 
-      <!-- Filter/Category section -->
-      <div class="flex justify-center mb-10 flex-wrap gap-2">
-        <button class="btn btn-sm btn-active">All</button>
-        {allTags.map((tag) => <button class="btn btn-sm">{tag}</button>)}
-      </div>
+  <!-- Filter/Category section -->
+  <div class="flex justify-center mb-10 flex-wrap gap-2">
+    <button class="btn btn-sm btn-active">All</button>
+    {allTags.map((tag) => <button class="btn btn-sm">{tag}</button>)}
+  </div>
 
-      <!-- Projects Grid -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {
-          sortedProjects.map((project) => (
-            <ProjectCard
-              title={project.data.title}
-              description={project.data.description}
-              tags={project.data.tags}
-              image={dummyImage}
-              links={project.data.links}
-              slug={project.id}
-            />
-          ))
-        }
-      </div>
+  <!-- Projects Grid -->
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    {
+      sortedProjects.map((project) => (
+        <ProjectCard
+          title={project.data.title}
+          description={project.data.description}
+          tags={project.data.tags}
+          image={dummyImage}
+          links={project.data.links}
+          slug={project.id}
+        />
+      ))
+    }
+  </div>
 
-      <!-- Call to Action -->
-      <div class="mt-16 text-center">
-        <h2 class="text-2xl font-bold mb-4">Interested in working together?</h2>
-        <a href="mailto:timdttran2000@gmail.com" class="btn btn-primary">
-          Get in Touch
-        </a>
-      </div>
-    </main>
-
-    <footer class="footer footer-center p-10 bg-base-300 text-base-content">
-      <div>
-        <p>
-          © {new Date().getFullYear()} Tim Tran - Built with Astro and DaisyUI
-        </p>
-        <div class="flex gap-4 mt-2">
-          <a href="/" class="link link-hover">Home</a>
-          <a href="/projects" class="link link-hover font-medium">Projects</a>
-          <a href="#contact" class="link link-hover">Contact</a>
-        </div>
-      </div>
-    </footer>
-  </body>
-</html>
+  <!-- Call to Action -->
+  <div class="mt-16 text-center">
+    <h2 class="text-2xl font-bold mb-4">Interested in working together?</h2>
+    <a href="mailto:timdttran2000@gmail.com" class="btn btn-primary">
+      Get in Touch
+    </a>
+  </div>
+</Layout>

@@ -1,8 +1,9 @@
 ---
-import { getEntry, render } from "astro:content";
-import "../../styles/global.css";
+import { render } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
 import { getCollection } from "astro:content";
 
+// Generate static paths for all projects
 export async function getStaticPaths() {
   const projects = await getCollection("projects");
   return projects.map((project) => ({
@@ -11,18 +12,96 @@ export async function getStaticPaths() {
   }));
 }
 
+// Get the project for this page
 const { project } = Astro.props;
 const { Content } = await render(project);
 ---
 
-<html lang="en" data-theme="light">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="description" content={project.data.description} />
-    <title>{project.data.title} | Tim Tran</title>
-  </head>
-  <body class="bg-base-200 min-h-screen">
+<Layout
+  title={`${project.data.title} | Tim Tran`}
+  description={project.data.description}
+>
+  <div class="mb-8">
+    <a href="/projects" class="btn btn-ghost btn-sm">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+        class="w-5 h-5"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"></path>
+      </svg>
+      Back to Projects
+    </a>
+  </div>
+
+  <!-- Project Header -->
+  <div class="card bg-base-100 shadow-xl mb-8">
+    <div class="card-body">
+      <h1 class="text-4xl font-bold text-primary mb-4">
+        {project.data.title}
+      </h1>
+
+      <div class="flex flex-wrap gap-2 mb-4">
+        {
+          project.data.tags.map((tag) => (
+            <div class="badge badge-outline">{tag}</div>
+          ))
+        }
+      </div>
+
+      <p class="text-xl mb-6">{project.data.description}</p>
+
+      <div class="flex gap-3">
+        {
+          project.data.links.github && (
+            <a
+              href={project.data.links.github}
+              target="_blank"
+              rel="noreferrer"
+              class="btn btn-outline"
+            >
+              GitHub Repo
+            </a>
+          )
+        }
+
+        {
+          project.data.links.demo && (
+            <a
+              href={project.data.links.demo}
+              target="_blank"
+              rel="noreferrer"
+              class="btn btn-outline"
+            >
+              Live Demo
+            </a>
+          )
+        }
+
+        {
+          project.data.links.website && (
+            <a
+              href={project.data.links.website}
+              target="_blank"
+              rel="noreferrer"
+              class="btn btn-outline"
+            >
+              Website
+            </a>
+          )
+        }
+      </div>
+    </div>
+  </div>
+
+  <!-- Project Content -->
+  <div class="prose prose-lg max-w-none bg-base-100 p-8 rounded-lg shadow-md">
     <Content />
-  </body>
-</html>
+  </div>
+</Layout>
