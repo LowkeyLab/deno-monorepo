@@ -5,9 +5,9 @@ interface Props {
   title: string;
   description: string;
   tags: string[];
-  image?: ImageMetadata;
+  image: ImageMetadata; // Changed from optional to required
   imageAlt: string;
-  slug: string; // Changed from optional to required
+  slug: string;
   links: {
     github?: string;
     demo?: string;
@@ -22,19 +22,15 @@ const sortedTags = [...tags].sort();
 ---
 
 <div class="card bg-base-100 shadow-xl overflow-hidden h-full">
-  {
-    image && (
-      <figure class="px-4 pt-4">
-        <Image
-          src={image}
-          alt={imageAlt}
-          class="rounded-lg object-cover aspect-video w-full"
-          width={600}
-          height={337}
-        />
-      </figure>
-    )
-  }
+  <figure class="px-4 pt-4">
+    <Image
+      src={image}
+      alt={imageAlt}
+      class="rounded-lg object-cover aspect-video w-full"
+      width={600}
+      height={337}
+    />
+  </figure>
 
   <div class="card-body">
     <h2 class="card-title text-primary font-bold">
