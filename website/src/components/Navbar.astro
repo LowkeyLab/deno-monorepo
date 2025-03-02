@@ -1,4 +1,6 @@
 ---
+import ThemeToggle from "./ThemeToggle.astro";
+
 interface Props {
   activeItem?: "home" | "projects" | "work" | "contact";
 }
@@ -85,6 +87,8 @@ const isActive = (item: string) => activeItem === item;
     </div>
   </div>
 
-  <!-- Empty navbar-end - keeping the structure for potential future use -->
-  <div class="navbar-end"></div>
+  <!-- Theme toggle in navbar-end -->
+  <div class="navbar-end">
+    <ThemeToggle />
+  </div>
 </div>
