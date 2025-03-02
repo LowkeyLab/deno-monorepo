@@ -1,11 +1,12 @@
 ---
 import { Image } from "astro:assets";
+import TagBadges from "./TagBadges.astro";
 
 interface Props {
   title: string;
   description: string;
   tags: string[];
-  image: ImageMetadata; // Changed from optional to required
+  image: ImageMetadata;
   imageAlt: string;
   slug: string;
   links: {
@@ -16,9 +17,6 @@ interface Props {
 }
 
 const { title, description, tags, image, imageAlt, slug, links } = Astro.props;
-
-// Sort tags alphabetically
-const sortedTags = [...tags].sort();
 ---
 
 <div class="card bg-base-100 shadow-xl overflow-hidden h-full">
@@ -40,13 +38,7 @@ const sortedTags = [...tags].sort();
     </h2>
     <p>{description}</p>
 
-    <div class="flex flex-wrap gap-1 mt-2">
-      {
-        sortedTags.map((tag) => (
-          <div class="badge badge-outline badge-sm">{tag}</div>
-        ))
-      }
-    </div>
+    <TagBadges tags={tags} size="sm" className="mt-2" />
 
     <div class="card-actions justify-end mt-4">
       {

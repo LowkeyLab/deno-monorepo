@@ -1,5 +1,6 @@
 ---
 import Layout from "./Layout.astro";
+import TagBadges from "../components/TagBadges.astro";
 
 interface Props {
   title: string;
@@ -52,13 +53,7 @@ const {
         {projectData.title}
       </h1>
 
-      <div class="flex flex-wrap gap-2 mb-4">
-        {
-          projectData.tags.map((tag) => (
-            <div class="badge badge-outline">{tag}</div>
-          ))
-        }
-      </div>
+      <TagBadges tags={projectData.tags} size="md" className="mb-4" />
 
       <p class="text-xl mb-6">{projectData.description}</p>
 
