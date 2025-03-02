@@ -1,6 +1,6 @@
 ---
 title: "Guess The Word"
-description: "A real-time multiplayer word guessing game built with Svelte, Express.js and WebSockets."
+description: "A real-time multiplayer word guessing game"
 cover: "../../assets/guess-the-word.png"
 tags: ["Node.js", "Socket.io", "Svelte", "Supabase", "Tailwind", "Postgres"]
 featured: true

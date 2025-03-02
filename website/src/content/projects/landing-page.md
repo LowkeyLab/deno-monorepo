@@ -1,6 +1,6 @@
 ---
 title: "Personal Landing Page"
-description: "A personal website built with Astro, Tailwind, and DaisyUI."
+description: "My personal website"
 cover: "../../assets/website.png"
 tags: ["Astro", "Tailwind", "DaisyUI", "Deno", "TypeScript"]
 featured: true
