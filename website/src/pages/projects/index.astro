@@ -33,23 +33,34 @@ const allTags = [...new Set(projects.flatMap((project) => project.data.tags))];
 
   <!-- Filter/Category section -->
   <div class="flex justify-center mb-10 flex-wrap gap-2">
-    <button class="btn btn-sm btn-active">All</button>
-    {allTags.map((tag) => <button class="btn btn-sm">{tag}</button>)}
+    <button class="tag-filter btn btn-sm btn-active" data-tag="all">All</button>
+    {
+      allTags.map((tag) => (
+        <button class="tag-filter btn btn-sm" data-tag={tag}>
+          {tag}
+        </button>
+      ))
+    }
   </div>
 
   <!-- Projects Grid -->
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+  <div
+    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+    id="projects-grid"
+  >
     {
       sortedProjects.map((project) => (
-        <ProjectCard
-          title={project.data.title}
-          description={project.data.description}
-          tags={project.data.tags}
-          image={project.data.cover || dummyImage}
-          imageAlt="Project cover"
-          links={project.data.links}
-          slug={project.id}
-        />
+        <div class="project-card" data-tags={project.data.tags.join(",")}>
+          <ProjectCard
+            title={project.data.title}
+            description={project.data.description}
+            tags={project.data.tags}
+            image={project.data.cover || dummyImage}
+            imageAlt="Project cover"
+            links={project.data.links}
+            slug={project.id}
+          />
+        </div>
       ))
     }
   </div>
@@ -67,3 +78,33 @@ const allTags = [...new Set(projects.flatMap((project) => project.data.tags))];
     </a>
   </div>
 </Layout>
+
+<script>
+  // Client-side script for filtering projects by tags
+  document.addEventListener("DOMContentLoaded", () => {
+    const filterButtons = document.querySelectorAll(".tag-filter");
+    const projectCards = document.querySelectorAll(".project-card");
+
+    // Add click event listener to each filter button
+    filterButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const selectedTag = button.getAttribute("data-tag") || "all";
+
+        // Update active button styles
+        filterButtons.forEach((btn) => btn.classList.remove("btn-active"));
+        button.classList.add("btn-active");
+
+        // Filter the projects using Tailwind classes
+        projectCards.forEach((card) => {
+          const cardTags = card.getAttribute("data-tags")?.split(",") || [];
+
+          if (selectedTag === "all" || cardTags.includes(selectedTag)) {
+            card.classList.remove("hidden");
+          } else {
+            card.classList.add("hidden");
+          }
+        });
+      });
+    });
+  });
+</script>
