@@ -46,7 +46,8 @@ const allTags = [...new Set(projects.flatMap((project) => project.data.tags))];
           title={project.data.title}
           description={project.data.description}
           tags={project.data.tags}
-          image={dummyImage}
+          image={project.data.cover || dummyImage}
+          imageAlt="Project cover"
           links={project.data.links}
           slug={project.id}
         />

@@ -6,7 +6,7 @@ interface Props {
   description: string;
   tags: string[];
   image?: ImageMetadata;
-  imageAlt?: string;
+  imageAlt: string;
   slug?: string; // We'll keep the prop name the same for backward compatibility
   links: {
     github?: string;
@@ -20,7 +20,7 @@ const {
   description,
   tags,
   image,
-  imageAlt = "Project screenshot",
+  imageAlt,
   slug,
   links,
 } = Astro.props;
