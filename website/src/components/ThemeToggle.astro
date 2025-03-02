@@ -4,7 +4,7 @@
 
 <label class="swap swap-rotate">
   <!-- Hidden checkbox to control the state -->
-  <input type="checkbox" class="theme-controller" value="synthwave" />
+  <input type="checkbox" class="theme-controller" value="dracula" />
 
   <!-- Sun icon -->
   <svg
@@ -31,7 +31,7 @@
 
 <script>
   // Define theme type to ensure we only use valid values
-  type Theme = "light" | "synthwave";
+  type Theme = "light" | "dracula";
 
   // Find the theme toggle input with proper error handling
   const themeToggle =
@@ -49,13 +49,13 @@
     const savedTheme = localStorage.getItem("theme") as Theme | null;
 
     // If we have a valid saved theme, use it
-    if (savedTheme === "light" || savedTheme === "synthwave") {
+    if (savedTheme === "light" || savedTheme === "dracula") {
       return savedTheme;
     }
 
     // Otherwise fall back to OS preference
     return window.matchMedia("(prefers-color-scheme: dark)").matches
-      ? "synthwave"
+      ? "dracula"
       : "light";
   };
 
@@ -68,7 +68,7 @@
     localStorage.setItem("theme", theme);
 
     if (themeToggle) {
-      themeToggle.checked = theme === "synthwave";
+      themeToggle.checked = theme === "dracula";
     }
   };
 
@@ -82,7 +82,7 @@
   themeToggle?.addEventListener("change", (): void => {
     if (!themeToggle) return;
 
-    const newTheme: Theme = themeToggle.checked ? "synthwave" : "light";
+    const newTheme: Theme = themeToggle.checked ? "dracula" : "light";
     setTheme(newTheme);
   });
 
@@ -92,7 +92,7 @@
     .addEventListener("change", (e): void => {
       if (!localStorage.getItem("theme")) {
         // Only auto-switch if the user hasn't manually set a preference
-        const newTheme: Theme = e.matches ? "synthwave" : "light";
+        const newTheme: Theme = e.matches ? "dracula" : "light";
         setTheme(newTheme);
       }
     });
