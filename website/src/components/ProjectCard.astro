@@ -15,15 +15,10 @@ interface Props {
   };
 }
 
-const {
-  title,
-  description,
-  tags,
-  image,
-  imageAlt,
-  slug,
-  links,
-} = Astro.props;
+const { title, description, tags, image, imageAlt, slug, links } = Astro.props;
+
+// Sort tags alphabetically
+const sortedTags = [...tags].sort();
 ---
 
 <div class="card bg-base-100 shadow-xl overflow-hidden h-full">
@@ -56,7 +51,11 @@ const {
     <p>{description}</p>
 
     <div class="flex flex-wrap gap-1 mt-2">
-      {tags.map((tag) => <div class="badge badge-outline badge-sm">{tag}</div>)}
+      {
+        sortedTags.map((tag) => (
+          <div class="badge badge-outline badge-sm">{tag}</div>
+        ))
+      }
     </div>
 
     <div class="card-actions justify-end mt-4">

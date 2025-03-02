@@ -14,8 +14,21 @@ const sortedProjects = projects.sort((a, b) => {
   return a.data.title.localeCompare(b.data.title);
 });
 
-// Extract all unique tags for filtering
-const allTags = [...new Set(projects.flatMap((project) => project.data.tags))];
+// Count frequency of each tag
+const tagFrequency = projects
+  .flatMap((project) => project.data.tags)
+  .reduce(
+    (acc, tag) => {
+      acc[tag] = (acc[tag] || 0) + 1;
+      return acc;
+    },
+    {} as Record<string, number>
+  );
+
+// Extract all unique tags and sort by frequency (most used first)
+const allTags = [
+  ...new Set(projects.flatMap((project) => project.data.tags)),
+].sort((a, b) => tagFrequency[b] - tagFrequency[a]);
 ---
 
 <Layout
