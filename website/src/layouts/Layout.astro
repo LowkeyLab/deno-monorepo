@@ -1,5 +1,6 @@
 ---
 import "../styles/global.css";
+import { ClientRouter } from "astro:transitions";
 import Navbar from "../components/Navbar.astro";
 
 interface Props {
@@ -25,6 +26,7 @@ const currentYear = new Date().getFullYear();
     <meta name="description" content={description} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{title}</title>
+    <ClientRouter />
   </head>
   <body class="bg-base-200 min-h-screen flex flex-col">
     <Navbar activeItem={activeItem} />
