@@ -1,6 +1,6 @@
 ---
 interface Props {
-  activeItem?: "home" | "projects" | "contact";
+  activeItem?: "home" | "projects" | "work" | "contact";
 }
 
 const { activeItem = "home" } = Astro.props;
@@ -42,6 +42,9 @@ const isActive = (item: string) => activeItem === item;
           >
         </li>
         <li>
+          <a class={isActive("work") ? "menu-active" : ""} href="/work">Work</a>
+        </li>
+        <li>
           <a
             href="mailto:timdttran2000@gmail.com"
             target="_blank"
@@ -67,6 +70,9 @@ const isActive = (item: string) => activeItem === item;
           <a class={isActive("projects") ? "menu-active" : ""} href="/projects"
             >Projects</a
           >
+        </li>
+        <li>
+          <a class={isActive("work") ? "menu-active" : ""} href="/work">Work</a>
         </li>
         <li>
           <a
