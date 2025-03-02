@@ -14,12 +14,18 @@ interface Props {
       website?: string;
     };
   };
+  activeItem?: "home" | "projects" | "contact";
 }
 
-const { title, description, projectData } = Astro.props;
+const {
+  title,
+  description,
+  projectData,
+  activeItem = "projects",
+} = Astro.props;
 ---
 
-<Layout title={title} description={description}>
+<Layout title={title} description={description} activeItem={activeItem}>
   <div class="mb-8">
     <a href="/projects" class="btn btn-ghost btn-sm">
       <svg
