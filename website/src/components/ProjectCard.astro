@@ -7,7 +7,7 @@ interface Props {
   tags: string[];
   image?: ImageMetadata;
   imageAlt: string;
-  slug?: string; // We'll keep the prop name the same for backward compatibility
+  slug: string; // Changed from optional to required
   links: {
     github?: string;
     demo?: string;
@@ -38,15 +38,9 @@ const sortedTags = [...tags].sort();
 
   <div class="card-body">
     <h2 class="card-title text-primary font-bold">
-      {
-        slug ? (
-          <a href={`/projects/${slug}`} class="hover:underline">
-            {title}
-          </a>
-        ) : (
-          title
-        )
-      }
+      <a href={`/projects/${slug}`} class="hover:underline">
+        {title}
+      </a>
     </h2>
     <p>{description}</p>
 
@@ -136,13 +130,9 @@ const sortedTags = [...tags].sort();
         )
       }
 
-      {
-        slug && (
-          <a href={`/projects/${slug}`} class="btn btn-sm btn-primary">
-            View Details
-          </a>
-        )
-      }
+      <a href={`/projects/${slug}`} class="btn btn-sm btn-primary">
+        View Details
+      </a>
     </div>
   </div>
 </div>
