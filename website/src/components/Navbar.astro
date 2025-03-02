@@ -31,9 +31,9 @@ const isActive = (path: string) => {
         tabindex="0"
         class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
       >
-        <li><a class={isActive("/") ? "active" : ""} href="/">Home</a></li>
+        <li><a class={isActive("/") ? "menu-active" : ""} href="/">Home</a></li>
         <li>
-          <a class={isActive("/projects") ? "active" : ""} href="/projects"
+          <a class={isActive("/projects") ? "menu-active" : ""} href="/projects"
             >Projects</a
           >
         </li>
@@ -56,9 +56,9 @@ const isActive = (path: string) => {
     <!-- Desktop navigation links -->
     <div class="hidden lg:flex">
       <ul class="menu menu-horizontal px-1">
-        <li><a class={isActive("/") ? "active" : ""} href="/">Home</a></li>
+        <li><a class={isActive("/") ? "menu-active" : ""} href="/">Home</a></li>
         <li>
-          <a class={isActive("/projects") ? "active" : ""} href="/projects"
+          <a class={isActive("/projects") ? "menu-active" : ""} href="/projects"
             >Projects</a
           >
         </li>
