@@ -6,116 +6,48 @@ interface Props {
   title: string;
   description: string;
   tags: string[];
-  image?: ImageMetadata; // Make image optional
-  imageAlt?: string;
-  slug?: string;
-  links?: {
+  image: ImageMetadata;
+  imageAlt: string;
+  slug: string;
+  links: {
     github?: string;
     demo?: string;
     website?: string;
   };
-  isDetailView?: boolean;
-  showBackButton?: boolean;
 }
 
-const {
-  title,
-  description,
-  tags,
-  image,
-  imageAlt = "Project cover",
-  slug = "",
-  links = {},
-  isDetailView = false,
-  showBackButton = false,
-} = Astro.props;
-
-// Determine image dimensions based on view
-const imageWidth = 600;
-const imageHeight = 337;
-
-// Helper to check if there are any links
-const hasLinks = Object.values(links).some((link) => !!link);
+const { title, description, tags, image, imageAlt, slug, links } = Astro.props;
 ---
 
-<div
-  class={`card bg-base-100 shadow-xl ${isDetailView ? "mb-8" : "overflow-hidden h-full"}`}
->
-  {/* Back Button - Only shown in detail view when requested */}
-  {
-    showBackButton && isDetailView && (
-      <div class="mb-2 pt-6 px-6">
-        <a href="/projects" class="btn btn-ghost btn-sm">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke-width="1.5"
-            stroke="currentColor"
-            class="w-5 h-5"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"
-            />
-          </svg>
-          Back to Projects
-        </a>
-      </div>
-    )
-  }
-
-  {/* Image - Only shown in list view and when image is provided */}
-  {
-    image && (
-      <figure class="px-4 pt-4">
-        <Image
-          src={image}
-          alt={imageAlt}
-          class="rounded-lg aspect-video w-full object-cover"
-          width={imageWidth}
-          height={imageHeight}
-        />
-      </figure>
-    )
-  }
+<div class="card bg-base-100 shadow-xl overflow-hidden h-full">
+  <figure class="px-4 pt-4">
+    <Image
+      src={image}
+      alt={imageAlt}
+      class="rounded-lg object-cover aspect-video w-full"
+      width={600}
+      height={337}
+    />
+  </figure>
 
   <div class="card-body">
-    {/* Title - Either linked or not based on view */}
-    <h2
-      class={`${isDetailView ? "text-4xl" : "card-title"} font-bold text-primary`}
-    >
-      {
-        !isDetailView && slug ? (
-          <a href={`/projects/${slug}`} class="hover:underline">
-            {title}
-          </a>
-        ) : (
-          title
-        )
-      }
+    <h2 class="card-title text-primary font-bold">
+      <a href={`/projects/${slug}`} class="hover:underline">
+        {title}
+      </a>
     </h2>
+    <p>{description}</p>
 
-    {/* Tags */}
-    <TagBadges
-      tags={tags}
-      size={isDetailView ? "md" : "sm"}
-      className={isDetailView ? "mb-4" : "mt-2"}
-    />
+    <TagBadges tags={tags} size="sm" className="mt-2" />
 
-    {/* Description */}
-    <p class={isDetailView ? "text-xl mb-6" : ""}>{description}</p>
-
-    {/* Links */}
-    <div class={`card-actions ${isDetailView ? "" : "justify-end mt-4"}`}>
+    <div class="card-actions justify-end mt-4">
       {
-        hasLinks && links.github && (
+        links.github && (
           <a
             href={links.github}
             target="_blank"
             rel="noreferrer"
-            class={`btn ${isDetailView ? "" : "btn-sm"} btn-outline`}
+            class="btn btn-sm btn-outline"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -123,22 +55,22 @@ const hasLinks = Object.values(links).some((link) => !!link);
               height="16"
               viewBox="0 0 24 24"
               fill="currentColor"
-              class={`${isDetailView ? "w-5 h-5 mr-2" : "w-4 h-4"}`}
+              class="w-4 h-4"
             >
               <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
             </svg>
-            {isDetailView ? "GitHub Repo" : "Code"}
+            Code
           </a>
         )
       }
 
       {
-        hasLinks && links.demo && (
+        links.demo && (
           <a
             href={links.demo}
             target="_blank"
             rel="noreferrer"
-            class={`btn ${isDetailView ? "" : "btn-sm"} btn-outline`}
+            class="btn btn-sm btn-outline"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -146,7 +78,7 @@ const hasLinks = Object.values(links).some((link) => !!link);
               viewBox="0 0 24 24"
               stroke-width="1.5"
               stroke="currentColor"
-              class={`${isDetailView ? "w-5 h-5 mr-2" : "w-4 h-4"}`}
+              class="w-4 h-4"
             >
               <path
                 stroke-linecap="round"
@@ -154,18 +86,18 @@ const hasLinks = Object.values(links).some((link) => !!link);
                 d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.347a1.125 1.125 0 0 1 0 1.972l-11.54 6.347a1.125 1.125 0 0 1-1.667-.986V5.653Z"
               />
             </svg>
-            {isDetailView ? "Live Demo" : "Demo"}
+            Demo
           </a>
         )
       }
 
       {
-        hasLinks && links.website && (
+        links.website && (
           <a
             href={links.website}
             target="_blank"
             rel="noreferrer"
-            class={`btn ${isDetailView ? "" : "btn-sm"} btn-outline`}
+            class="btn btn-sm btn-outline"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -173,7 +105,7 @@ const hasLinks = Object.values(links).some((link) => !!link);
               viewBox="0 0 24 24"
               stroke-width="1.5"
               stroke="currentColor"
-              class={`${isDetailView ? "w-5 h-5 mr-2" : "w-4 h-4"}`}
+              class="w-4 h-4"
             >
               <path
                 stroke-linecap="round"
@@ -181,18 +113,14 @@ const hasLinks = Object.values(links).some((link) => !!link);
                 d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0 1 12 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 0 1 3 12c0-1.605.42-3.113 1.157-4.418"
               />
             </svg>
-            {isDetailView ? "Website" : "Website"}
+            Website
           </a>
         )
       }
 
-      {
-        !isDetailView && (
-          <a href={`/projects/${slug}`} class="btn btn-sm btn-primary">
-            View Details
-          </a>
-        )
-      }
+      <a href={`/projects/${slug}`} class="btn btn-sm btn-primary">
+        View Details
+      </a>
     </div>
   </div>
 </div>
