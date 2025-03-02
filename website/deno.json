@@ -9,6 +9,7 @@
   "imports": {
     "@std/http": "jsr:@std/http@^1.0.13",
     "@astrojs/svelte": "npm:@astrojs/svelte@^7.0.5",
+    "@tailwindcss/typography": "npm:@tailwindcss/typography@^0.5.16",
     "@tailwindcss/vite": "npm:@tailwindcss/vite@^4.0.9",
     "astro": "npm:astro@^5.4.1",
     "daisyui": "npm:daisyui@^5.0.0",

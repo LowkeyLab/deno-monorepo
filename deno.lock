@@ -16,6 +16,7 @@
     "npm:@astrojs/preact@^4.0.5": "4.0.5_preact@10.26.4_vite@6.2.0",
     "npm:@astrojs/rss@^4.0.11": "4.0.11",
     "npm:@astrojs/svelte@^7.0.5": "7.0.5_astro@5.4.1__vite@6.2.0__zod@3.24.2_svelte@5.20.5__acorn@8.14.0_typescript@5.8.2_vite@6.2.0",
+    "npm:@tailwindcss/typography@~0.5.16": "0.5.16_tailwindcss@4.0.9",
     "npm:@tailwindcss/vite@^4.0.9": "4.0.9_vite@6.2.0__lightningcss@1.29.1_lightningcss@1.29.1",
     "npm:astro@*": "5.4.1_vite@6.2.0_zod@3.24.2",
     "npm:astro@5.4.1": "5.4.1_vite@6.2.0_zod@3.24.2",
@@ -754,6 +755,16 @@
         "@tailwindcss/oxide-linux-x64-musl",
         "@tailwindcss/oxide-win32-arm64-msvc",
         "@tailwindcss/oxide-win32-x64-msvc"
+      ]
+    },
+    "@tailwindcss/typography@0.5.16_tailwindcss@4.0.9": {
+      "integrity": "sha512-0wDLwCVF5V3x3b1SGXPCDcdsbDHMBe+lkFzBRaHeLvNi+nrrnZ1lA18u+OTWO8iSWU2GxUOCvlXtDuqftc1oiA==",
+      "dependencies": [
+        "lodash.castarray",
+        "lodash.isplainobject",
+        "lodash.merge",
+        "postcss-selector-parser",
+        "tailwindcss"
       ]
     },
     "@tailwindcss/vite@4.0.9_vite@6.2.0__lightningcss@1.29.1_lightningcss@1.29.1": {
@@ -1622,6 +1633,15 @@
         "p-locate"
       ]
     },
+    "lodash.castarray@4.4.0": {
+      "integrity": "sha512-aVx8ztPv7/2ULbArGJ2Y42bG1mEQ5mGjpdvrbJcJFU3TbYybe+QlLS4pst9zV52ymy2in1KpFPiZnAOATxD4+Q=="
+    },
+    "lodash.isplainobject@4.0.6": {
+      "integrity": "sha512-oSXzaWypCMHkPC3NvBEaPHf0KsA5mvPrOPgQWDsbg8n7orZ290M0BmC/jgRZ4vcJ6DTAhjrsSYgdsW/F+MFOBA=="
+    },
+    "lodash.merge@4.6.2": {
+      "integrity": "sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ=="
+    },
     "longest-streak@3.1.0": {
       "integrity": "sha512-9Ri+o0JYgehTaVBBDoMqIl8GXtbWg711O3srftcHhZ0dqnETqLaoIK0x17fUw9rFSlK/0NlsKe0Ahhyl5pXE2g=="
     },
@@ -2181,6 +2201,13 @@
         "find-up"
       ]
     },
+    "postcss-selector-parser@6.0.10": {
+      "integrity": "sha512-IQ7TZdoaqbT+LCpShg46jnZVlhWD2w6iQYAcYXfHARZ7X1t/UGhhceQDs5X0cGqKvYlHNOuv7Oa1xmb0oQuA3w==",
+      "dependencies": [
+        "cssesc",
+        "util-deprecate"
+      ]
+    },
     "postcss@8.5.3": {
       "integrity": "sha512-dle9A3yYxlBSrt8Fu+IpjGT8SY8hN0mlaA6GY8t0P5PjIOZemULz/E2Bnm/2dcUOena75OTNkHI76uZBNUUq3A==",
       "dependencies": [
@@ -2679,6 +2706,9 @@
         "picocolors"
       ]
     },
+    "util-deprecate@1.0.2": {
+      "integrity": "sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw=="
+    },
     "vfile-location@5.0.3": {
       "integrity": "sha512-5yXvWDEgqeiYiBe1lbxYF7UMAIm/IcopxMHrMQDq3nvKcjPKIhZklUKL+AE7J7uApI4kwe2snsK+eI6UTj9EHg==",
       "dependencies": [
@@ -2863,6 +2893,7 @@
         "dependencies": [
           "jsr:@std/http@^1.0.13",
           "npm:@astrojs/svelte@^7.0.5",
+          "npm:@tailwindcss/typography@~0.5.16",
           "npm:@tailwindcss/vite@^4.0.9",
           "npm:astro@^5.4.1",
           "npm:daisyui@5",
