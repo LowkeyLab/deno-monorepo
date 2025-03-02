@@ -2,7 +2,7 @@
 title: "Guess The Word"
 description: "A real-time multiplayer word guessing game"
 cover: "../../assets/guess-the-word.png"
-tags: ["Node.js", "Socket.io", "Svelte", "Supabase", "Tailwind", "Postgres"]
+tags: ["Node.js", "WebSocket", "Svelte", "Tailwind", "Postgres"]
 featured: true
 links:
   github: "https://github.com/LowkeyLab/guess-the-word"

@@ -2,7 +2,7 @@
 title: "Personal Landing Page"
 description: "My personal website"
 cover: "../../assets/website.png"
-tags: ["Astro", "Tailwind", "DaisyUI", "Deno", "TypeScript"]
+tags: ["Astro", "Tailwind", "Deno", "TypeScript"]
 featured: true
 links:
   github: "https://github.com/LowkeyLab/deno-monorepo/tree/main/website"
