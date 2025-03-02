@@ -2,6 +2,7 @@
 import { render } from "astro:content";
 import ProjectLayout from "../../layouts/ProjectLayout.astro";
 import { getCollection } from "astro:content";
+import Prose from "../../components/Prose.astro";
 
 // Generate static paths for all projects
 export async function getStaticPaths() {
@@ -23,5 +24,7 @@ const { Content } = await render(project);
   projectData={project.data}
   activeItem="projects"
 >
-  <Content />
+  <Prose>
+    <Content />
+  </Prose>
 </ProjectLayout>
