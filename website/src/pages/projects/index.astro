@@ -47,10 +47,12 @@ const allTags = [
 
   <!-- Filter/Category section -->
   <div class="flex justify-center mb-10 flex-wrap gap-2">
-    <button class="tag-filter btn btn-sm btn-active" data-tag="all">All</button>
+    <button class="tag-filter btn btn-dash btn-sm btn-active" data-tag="all"
+      >All</button
+    >
     {
       allTags.map((tag) => (
-        <button class="tag-filter btn btn-sm" data-tag={tag}>
+        <button class="tag-filter btn btn-dash btn-sm" data-tag={tag}>
           {tag}
         </button>
       ))
