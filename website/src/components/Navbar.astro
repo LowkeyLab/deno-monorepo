@@ -11,7 +11,7 @@ const { activeItem = "home" } = Astro.props;
 const isActive = (item: string) => activeItem === item;
 ---
 
-<div class="navbar bg-base-100 shadow-sm sticky top-0 z-30">
+<nav class="navbar bg-base-100 shadow-sm sticky top-0 z-30">
   <div class="container mx-auto px-4 flex justify-between">
     <!-- Logo and mobile hamburger menu in navbar-start -->
     <div class="navbar-start">
@@ -99,4 +99,4 @@ const isActive = (item: string) => activeItem === item;
       <ThemeToggle />
     </div>
   </div>
-</div>
+</nav>
