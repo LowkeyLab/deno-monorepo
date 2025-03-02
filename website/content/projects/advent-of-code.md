@@ -6,10 +6,6 @@ links:
   github: "https://github.com/LowkeyLab/deno-monorepo/tree/main/aoc-24"
 ---
 
-# Advent of Code Solutions
-
-This repository contains my solutions for the annual Advent of Code programming puzzles, implemented with Deno and TypeScript.
-
 ## About Advent of Code
 
 Advent of Code is an annual series of programming puzzles that are released daily from December 1st to December 25th. Each day presents two related challenges that can be solved using any programming language or approach.

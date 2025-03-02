@@ -8,10 +8,6 @@ links:
   demo: "https://www.tacascer.com"
 ---
 
-# Developer Portfolio
-
-This project is my personal portfolio website, built to showcase my projects and skills as a software engineer. It serves as both a demonstration of my front-end abilities and a central hub for information about my work.
-
 ## Features
 
 - Responsive design that works on all devices
