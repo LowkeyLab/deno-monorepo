@@ -16,7 +16,9 @@ links:
 - Fast performance with minimal JavaScript
 - Built using modern web technologies
 
-## Astro
+## Tech Stack
+
+### Astro
 
 [Astro](https://astro.build/)'s content-driven principle and focus on [island architecture](https://jasonformat.com/islands-architecture/) is the missing web framework I was looking for.
 
@@ -26,7 +28,7 @@ The most popular framework that offered both easy content management and client 
 
 In recent years, server-side rendering has been making a return (thanks to [Next.js](https://nextjs.org/)). As a response, React added [server components](https://react.dev/reference/rsc/server-components), which Gatsby uses to introduce [partial hydration](https://www.gatsbyjs.com/docs/conceptual/partial-hydration). While this is great for those that are already in the React ecosystem, I happen to not like React and its programming model very much. Still in the early days of my web development journey, I want to experiment with different approaches to web development, and Astro's flexible integration with all kinds of front-end framework is a much needed feature for me.
 
-## TailwindCSS
+### TailwindCSS
 
 [TailwindCSS](https://tailwindcss.com/) has become a main-stay in the web development circle for styling applications.
 
@@ -38,7 +40,7 @@ The problem with components is style customizability. Unless your components hav
 
 Good design systems have well-defined [CSS variables](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_cascading_variables/Using_CSS_custom_properties) for things like "small font size", "medium font size", etc. to be overriden. Great design systems have well-defined classes for these common styles, like `text-sm`, `text-md`, because changing the font size also means changing the line height. TailwindCSS is that great design system.
 
-## DaisyUI
+### DaisyUI
 
 [DaisyUI](https://daisyui.com/) builds upon the primitives provided by TailwindCSS to provide more concise CSS classes for common parts of a website (buttons, navbars, etc.). 
 
@@ -48,7 +50,7 @@ I wanted a pure CSS library that provided some good-looking out-of-the-box class
 
 I also wanted a library that was built upon TailwindCSS. [Tailwind Typography](https://github.com/tailwindlabs/tailwindcss-typography) allows styling of external vanilla HTML contents (like Markdown files) with Tailwind primitives. Having a CSS library that was built upon TailwindCSS allows content-driven parts of my website (like this page you're reading) to look good without having to specify any custom stylings.
 
-## Deno
+### Deno
 
 [Deno](https://deno.com/) is a server-side JavaScript runtime (yes, there are more than one) by the creator of [Node.js](https://nodejs.org/en).
 
