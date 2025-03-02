@@ -49,20 +49,24 @@ const {
       <h2 class="text-2xl font-semibold text-primary mt-2">{title}</h2>
       <p class="py-6 text-lg">{description}</p>
 
-      <!-- Site navigation links -->
-      <div class="flex gap-5 mb-6">
+      <!-- Site navigation links - full width on mobile, side by side on larger screens -->
+      <div class="flex flex-col sm:flex-row w-full mb-6 gap-3 sm:gap-5">
         <a
           href="/projects"
-          class="text-primary font-medium text-lg hover:underline"
-          >Projects &gt;</a
+          class="text-primary font-medium text-lg hover:underline text-center sm:text-left py-2 sm:py-0 border-b sm:border-0 border-base-300"
         >
-        <a href="/work" class="text-primary font-medium text-lg hover:underline"
-          >Experience &gt;</a
+          Projects &gt;
+        </a>
+        <a
+          href="/work"
+          class="text-primary font-medium text-lg hover:underline text-center sm:text-left py-2 sm:py-0"
         >
+          Experience &gt;
+        </a>
       </div>
 
-      <!-- Social media links -->
-      <div class="flex gap-3 mb-6">
+      <!-- Social media links - centered on mobile -->
+      <div class="flex justify-center sm:justify-start gap-3 mb-6">
         {
           socials?.github && (
             <a
@@ -133,8 +137,8 @@ const {
         }
       </div>
 
-      <!-- Single Call to Action button -->
-      <div class="flex flex-wrap gap-3">
+      <!-- Single Call to Action button - centered on mobile -->
+      <div class="flex flex-wrap justify-center sm:justify-start gap-3">
         <a
           href={ctaLink}
           class="btn btn-primary"
