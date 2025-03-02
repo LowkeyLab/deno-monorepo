@@ -30,6 +30,9 @@ const {
   secondaryCtaText,
   secondaryCtaLink,
 } = Astro.props;
+
+// Add a helper to determine if a link is an email
+const isEmailLink = (link: string) => link.startsWith("mailto:");
 ---
 
 <div class="hero min-h-[80vh] bg-base-200">
@@ -131,8 +134,18 @@ const {
               </a>
             )}
             {secondaryCtaText && (
-              <a href={secondaryCtaLink} class="btn btn-outline">
-                {secondaryCtaText}
+              <a
+                href={secondaryCtaLink}
+                class="btn btn-outline"
+                target={
+                  isEmailLink(secondaryCtaLink || "") ? "_blank" : undefined
+                }
+                rel={
+                  isEmailLink(secondaryCtaLink || "") ? "noreferrer" : undefined
+                }
+              >
+                {" "}
+                {secondaryCtaText}{" "}
               </a>
             )}
           </div>
