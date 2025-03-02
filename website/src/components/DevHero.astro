@@ -18,21 +18,18 @@ interface Props {
   secondaryCtaLink?: string;
 }
 
-// Props destructuring without defaults
+// Props destructuring with email as default CTA
 const {
   name,
   title,
   description,
   avatarSrc,
   socials,
-  ctaText,
-  ctaLink,
-  secondaryCtaText,
-  secondaryCtaLink,
+  ctaText = "Contact Me",
+  ctaLink = "mailto:timdttran2000@gmail.com",
 } = Astro.props;
 
 // Add a helper to determine if a link is an email
-const isEmailLink = (link: string) => link.startsWith("mailto:");
 ---
 
 <div class="hero min-h-[80vh] bg-base-200">
@@ -51,6 +48,18 @@ const isEmailLink = (link: string) => link.startsWith("mailto:");
       <h1 class="text-5xl font-bold text-base-content">{name}</h1>
       <h2 class="text-2xl font-semibold text-primary mt-2">{title}</h2>
       <p class="py-6 text-lg">{description}</p>
+
+      <!-- Site navigation links -->
+      <div class="flex gap-5 mb-6">
+        <a
+          href="/projects"
+          class="text-primary font-medium text-lg hover:underline"
+          >Projects &gt;</a
+        >
+        <a href="/work" class="text-primary font-medium text-lg hover:underline"
+          >Experience &gt;</a
+        >
+      </div>
 
       <!-- Social media links -->
       <div class="flex gap-3 mb-6">
@@ -124,33 +133,17 @@ const isEmailLink = (link: string) => link.startsWith("mailto:");
         }
       </div>
 
-      <!-- Call to action buttons -->
-      {
-        (ctaText || secondaryCtaText) && (
-          <div class="flex flex-wrap gap-3">
-            {ctaText && (
-              <a href={ctaLink} class="btn btn-primary">
-                {ctaText}
-              </a>
-            )}
-            {secondaryCtaText && (
-              <a
-                href={secondaryCtaLink}
-                class="btn btn-outline"
-                target={
-                  isEmailLink(secondaryCtaLink || "") ? "_blank" : undefined
-                }
-                rel={
-                  isEmailLink(secondaryCtaLink || "") ? "noreferrer" : undefined
-                }
-              >
-                {" "}
-                {secondaryCtaText}{" "}
-              </a>
-            )}
-          </div>
-        )
-      }
+      <!-- Single Call to Action button -->
+      <div class="flex flex-wrap gap-3">
+        <a
+          href={ctaLink}
+          class="btn btn-primary"
+          target={ctaLink.startsWith("mailto:") ? "_blank" : undefined}
+          rel={ctaLink.startsWith("mailto:") ? "noreferrer" : undefined}
+        >
+          {ctaText}
+        </a>
+      </div>
     </div>
   </div>
 </div>
