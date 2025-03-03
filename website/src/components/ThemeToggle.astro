@@ -44,6 +44,7 @@
   <!-- Screen reader only text to describe current state -->
   <span class="sr-only" id="theme-status">Currently in light mode</span>
 </label>
+
 <script is:inline>
   // Create a function to register the theme toggle
   function registerThemeToggle() {
@@ -75,4 +76,6 @@
   //  Register function with Astro on after-swap events
   document.addEventListener("astro:after-swap", setTheme);
   document.addEventListener("astro:page-load", registerThemeToggle);
+  setTheme();
+  registerThemeToggle();
 </script>
