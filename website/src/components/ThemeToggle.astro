@@ -73,9 +73,12 @@
     }
   }
 
-  //  Register function with Astro on after-swap events
+  //  Sets theme after swap to avoid FART
   document.addEventListener("astro:after-swap", setTheme);
+  // Re-register the theme toggle after page load
   document.addEventListener("astro:page-load", registerThemeToggle);
+
+  // Run these for the first load
   setTheme();
   registerThemeToggle();
 </script>
