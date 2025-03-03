@@ -36,7 +36,7 @@ const currentYear = new Date().getFullYear();
     </style>
   </head>
   <body class="bg-base-200 min-h-screen flex flex-col">
-    <Navbar activeItem={activeItem} transition:persist />
+    <Navbar activeItem={activeItem} />
 
     <main class="container mx-auto px-4 py-12 flex-grow">
       <slot />
@@ -44,7 +44,6 @@ const currentYear = new Date().getFullYear();
 
     <footer
       class="footer footer-center p-6 bg-base-300 text-base-content mt-auto"
-      transition:persist
     >
       <p>© {currentYear} Tim Tran - Built with Astro and DaisyUI</p>
     </footer>

@@ -2,16 +2,12 @@
 // No props needed for this component
 ---
 
-<!-- 
-  Use a button element instead of label for better semantic meaning
-  and add proper ARIA attributes
--->
 <label
   class="swap swap-rotate"
   aria-label="Toggle theme"
   title="Toggle between light and dark mode"
 >
-  <!-- Hidden checkbox to control the state, maintain the existing functionality -->
+  <!-- Hidden checkbox to control the state -->
   <input
     type="checkbox"
     class="theme-controller"
@@ -46,103 +42,37 @@
   </svg>
 
   <!-- Screen reader only text to describe current state -->
-  <span class="sr-only" id="theme-status"> Currently in light mode </span>
+  <span class="sr-only" id="theme-status">Currently in light mode</span>
 </label>
-
 <script is:inline>
-  // Find the theme toggle and status elements
-  const themeToggle = document.querySelector(".theme-controller");
-  const themeStatus = document.getElementById("theme-status");
-  const themeToggleButton = document.querySelector(".swap");
-
-  if (!themeToggle || !themeStatus || !themeToggleButton) {
-    console.error("Theme elements not found");
+  // Create a function to register the theme toggle
+  function registerThemeToggle() {
+    const themeToggle = document.getElementById("theme-toggle");
+    const themeStatus = document.getElementById("theme-status");
+    if (themeToggle && themeStatus) {
+      // Event listener for the theme toggle
+      themeToggle.addEventListener("change", () => {
+        const newTheme = themeToggle.checked ? "dracula" : "light";
+        document.documentElement.setAttribute("data-theme", newTheme);
+        localStorage.setItem("theme", newTheme);
+        themeStatus.textContent = `Currently in ${newTheme} mode`;
+      });
+    }
+  }
+  // Create a function to set the theme based on local storage
+  function setTheme() {
+    // Theme toggle functionality
+    const themeToggle = document.getElementById("theme-toggle");
+    const themeStatus = document.getElementById("theme-status");
+    const storedTheme = localStorage.getItem("theme");
+    if (storedTheme) {
+      document.documentElement.setAttribute("data-theme", storedTheme);
+      themeToggle.checked = storedTheme === "dracula";
+      themeStatus.textContent = `Currently in ${storedTheme} mode`;
+    }
   }
 
-  /**
-   * Gets the current theme from localStorage or OS preference
-   * @returns The current theme value
-   */
-  const getCurrentTheme = () => {
-    const savedTheme = localStorage.getItem("theme");
-
-    // If we have a valid saved theme, use it
-    if (savedTheme === "light" || savedTheme === "dracula") {
-      return savedTheme;
-    }
-
-    // Otherwise fall back to OS preference
-    return window.matchMedia("(prefers-color-scheme: dark)").matches
-      ? "dracula"
-      : "light";
-  };
-
-  /**
-   * Sets the theme in both the DOM and localStorage
-   * Also updates accessibility properties
-   * @param theme The theme to set
-   */
-  const setTheme = (theme) => {
-    document.documentElement.setAttribute("data-theme", theme);
-    localStorage.setItem("theme", theme);
-
-    if (themeToggle) {
-      themeToggle.checked = theme === "dracula";
-    }
-
-    // Update the aria-pressed state and screen reader text
-    if (themeToggleButton) {
-      themeToggleButton.setAttribute(
-        "aria-pressed",
-        theme === "dracula" ? "true" : "false"
-      );
-    }
-
-    // Update screen reader status text
-    if (themeStatus) {
-      themeStatus.textContent = `Currently in ${theme === "dracula" ? "dark" : "light"} mode`;
-    }
-  };
-
-  /**
-   * Initialize theme toggle functionality
-   * This function can be called multiple times safely (on initial load and after page transitions)
-   */
-  const initThemeToggle = () => {
-    const currentTheme = getCurrentTheme();
-    setTheme(currentTheme);
-
-    // Handle button clicks (rather than just checkbox changes)
-    themeToggleButton?.addEventListener(
-      "click",
-      () => {
-        if (!themeToggle) return;
-
-        // Toggle the checkbox
-        themeToggle.checked = !themeToggle.checked;
-
-        // Update theme based on new checkbox state
-        const newTheme = themeToggle.checked ? "dracula" : "light";
-        setTheme(newTheme);
-      },
-      { once: true }
-    ); // Use once:true to prevent duplicate handlers
-  };
-
-  // Re-apply theme immediately after new page content is swapped in,
-  // before animations run, to prevent flashing of wrong theme
-  document.addEventListener("astro:after-swap", initThemeToggle);
-
-  // Add listener for OS theme changes
-  window.matchMedia("(prefers-color-scheme: dark)");
-  // Add listener for OS theme changes
-  window
-    .matchMedia("(prefers-color-scheme: dark)")
-    .addEventListener("change", (e) => {
-      if (!localStorage.getItem("theme")) {
-        // Only auto-switch if the user hasn't manually set a preference
-        const newTheme = e.matches ? "dracula" : "light";
-        setTheme(newTheme);
-      }
-    });
+  //  Register function with Astro on after-swap events
+  document.addEventListener("astro:after-swap", setTheme);
+  document.addEventListener("astro:page-load", registerThemeToggle);
 </script>
