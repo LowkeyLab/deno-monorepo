@@ -20,15 +20,15 @@ links:
 
 ### Astro
 
-[Astro](https://astro.build/)'s content-driven principle and focus on [island architecture](https://jasonformat.com/islands-architecture/) is the missing web framework I was looking for.
+[Astro](https://astro.build/)'s content-driven principle and focus on [island architecture](https://jasonformat.com/islands-architecture/) is the missing JavaScript framework I was looking for.
 
-Before Astro, web frameworks delineated themselves into "sites with only HTML content" and "sites with only Javascript". You either went for a static site generator like [Jekyll](https://jekyllrb.com/) and forgo all your interactivity, or you went with an SPA framework like [React](https://react.dev/) and forgo using content-oriented file formats like Markdown. You either had an inherently SEO friendly website, or you had an inherently interactive one. Worse, when you wanted to add some interactivity into your content-driven website, you couldn't use any of the popular web frameworks like React, Angular, Vue to do that!
+Before Astro, JavaScript frameworks delineated themselves into "sites with only HTML content" and "sites with only Javascript". You either went for a static site generator like [Jekyll](https://jekyllrb.com/) and forgo all your interactivity, or you went with an SPA framework like [React](https://react.dev/) and forgo using content-oriented file formats like Markdown. You either had an inherently SEO friendly website, or you had an inherently interactive one. Worse, when you wanted to add some interactivity into your content-driven website, you couldn't use any of the popular web frameworks like React, Angular, Vue to do that!
 
 The most popular framework that offered both easy content management and client interactivity is [Gatsby](https://www.gatsbyjs.com/). But Gatsby wedded you to React, and it was still using React to render content exclusively on the client side with Javascript.
 
 In recent years, server-side rendering has been making a return (thanks to [Next.js](https://nextjs.org/)). As a response, React added [server components](https://react.dev/reference/rsc/server-components), which Gatsby uses to introduce [partial hydration](https://www.gatsbyjs.com/docs/conceptual/partial-hydration). While this is great for those that are already in the React ecosystem, I happen to not like React and its programming model very much. Still in the early days of my web development journey, I want to experiment with different approaches to web development, and Astro's flexible integration with all kinds of front-end framework is a much needed feature for me.
 
-For a more detailed take on how JavaScript has evolved, visit Allan Pike's [blog on the topic](https://allenpike.com/2025/javascript-fatigue-ssr?).
+For a more detailed take on the JavaScript framework landscape, visit Allan Pike's [blog on the same topic](https://allenpike.com/2025/javascript-fatigue-ssr?).
 
 ### TailwindCSS
 
