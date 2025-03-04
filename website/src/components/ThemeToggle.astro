@@ -46,35 +46,57 @@
 </label>
 
 <script is:inline>
+  // Theme constants
+  const LIGHT = "light";
+  const DARK = "dracula";
+
   // Create a function to register the theme toggle
   function registerThemeToggle() {
     const themeToggle = document.getElementById("theme-toggle");
     const themeStatus = document.getElementById("theme-status");
+
     if (themeToggle && themeStatus) {
       // Event listener for the theme toggle
       themeToggle.addEventListener("change", () => {
-        const newTheme = themeToggle.checked ? "dracula" : "light";
+        const newTheme = themeToggle.checked ? DARK : LIGHT;
         document.documentElement.setAttribute("data-theme", newTheme);
         localStorage.setItem("theme", newTheme);
         themeStatus.textContent = `Currently in ${newTheme} mode`;
       });
     }
   }
-  // Create a function to set the theme based on local storage
+
+  // Create a function to set the theme based on local storage or OS preference
   function setTheme() {
-    // Theme toggle functionality
     const themeToggle = document.getElementById("theme-toggle");
     const themeStatus = document.getElementById("theme-status");
+
+    if (!themeToggle || !themeStatus) return;
+
     const storedTheme = localStorage.getItem("theme");
-    if (storedTheme) {
-      document.documentElement.setAttribute("data-theme", storedTheme);
-      themeToggle.checked = storedTheme === "dracula";
-      themeStatus.textContent = `Currently in ${storedTheme} mode`;
+    let theme;
+
+    if (storedTheme === LIGHT || storedTheme === DARK) {
+      // Use stored theme if available
+      theme = storedTheme;
+    } else {
+      // Otherwise use OS preference
+      const prefersDark = window.matchMedia(
+        "(prefers-color-scheme: dark)"
+      ).matches;
+      theme = prefersDark ? DARK : LIGHT;
+      // Note: We don't save this to localStorage so user can still manually override
     }
+
+    // Apply the theme
+    document.documentElement.setAttribute("data-theme", theme);
+    themeToggle.checked = theme === DARK;
+    themeStatus.textContent = `Currently in ${theme} mode`;
   }
 
-  //  Sets theme after swap to avoid FART
+  // Sets theme after swap to avoid FART (Flash of Incorrect Theme)
   document.addEventListener("astro:after-swap", setTheme);
+
   // Re-register the theme toggle after page load
   document.addEventListener("astro:page-load", registerThemeToggle);
 
