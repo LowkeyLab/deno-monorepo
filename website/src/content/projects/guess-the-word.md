@@ -27,7 +27,7 @@ Guess The Word is a real-time multiplayer word guessing game where players take 
 
 [SvelteKit](https://svelte.dev/docs/kit/introduction) is the server-side part of Svelte that enables Server Side Rendering, REST APIs, etc.
 
-Svelte is a new breed of web frameworks that compile component source code down into JavaScript, instead of being a pure JavaScript library. Svelte's popularity is why React is introducing the [React Compiler](https://react.dev/learn/react-compiler).
+Svelte is part of a new breed of web frameworks that compile component source code down into JavaScript, instead of being a pure JavaScript library. Svelte's popularity is why React is introducing the [React Compiler](https://react.dev/learn/react-compiler).
 
 Being a web framework in the 2020s, Svelte is also keenly aware of the need for Server Side Rendering and its interplay with Client Side Rendering. SvelteKit very explicitly models where [data loading is happening](https://svelte.dev/docs/kit/load): server-only, client-only, or both. This explicit modeling of the data loading lifecycle introduces some interesting problems. 
 
