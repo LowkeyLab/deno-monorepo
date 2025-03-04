@@ -20,9 +20,11 @@ links:
 
 ### Astro
 
-[Astro](https://astro.build/)'s content-driven principle and focus on [island architecture](https://jasonformat.com/islands-architecture/) is the missing JavaScript framework I was looking for.
+[Astro](https://astro.build/)'s content-driven principle and focus on [island architecture](https://jasonformat.com/islands-architecture/) is the missing web framework I was looking for.
 
-Before Astro, JavaScript frameworks delineated themselves into "sites with only HTML content" and "sites with only Javascript". You either went for a static site generator like [Jekyll](https://jekyllrb.com/) and forgo all your interactivity, or you went with an SPA framework like [React](https://react.dev/) and forgo using content-oriented file formats like Markdown. You either had an inherently SEO friendly website, or you had an inherently interactive one. Worse, when you wanted to add some interactivity into your content-driven website, you couldn't use any of the popular web frameworks like React, Angular, Vue to do that!
+Before Astro, web frameworks delineated themselves into "sites with only HTML content" and "sites with only Javascript". You either went for a static site generator like [Jekyll](https://jekyllrb.com/) and forgo all your interactivity, or you went with an SPA framework like [React](https://react.dev/) and forgo using content-oriented file formats like Markdown. You either had an inherently SEO friendly website, or you had an inherently interactive one.
+
+What about [Ruby on Rails](https://rubyonrails.org/), [Flask](https://flask.palletsprojects.com/en/stable/), and the likes? These frameworks require you to render your HTML entirely on the server; interactivity was provided by shipping some (probably untested) JavaScript. You use something like [JQuery](https://jquery.com/) to do DOM manipulation and AJAX. It's very hard to fully take over on the client side and reap some of its benefits, such as lower latency, easier context management, etc. The web moved to SPAs for a reason.
 
 The most popular framework that offered both easy content management and client interactivity is [Gatsby](https://www.gatsbyjs.com/). But Gatsby wedded you to React, and it was still using React to render content exclusively on the client side with Javascript.
 
