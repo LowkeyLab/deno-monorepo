@@ -34,24 +34,23 @@ const allTags = [
 
 <Layout
   title="Projects | Tim Tran"
-  description="Projects and open source by Tim Tran - Software Engineer"
+  description="Projects and work by Tim Tran - Software Engineer"
   activeItem="projects"
 >
   <header class="mb-12 text-center">
     <h1 class="text-4xl font-bold text-base-content mb-3">My Projects</h1>
     <p class="text-xl text-base-content/80 max-w-3xl mx-auto">
-      Write-ups of things I work on in my spare time
+      A collection of my recent work, open source contributions, and side
+      projects.
     </p>
   </header>
 
   <!-- Filter/Category section -->
   <div class="flex justify-center mb-10 flex-wrap gap-2">
-    <button class="tag-filter btn btn-dash btn-sm btn-active" data-tag="all"
-      >All</button
-    >
+    <button class="tag-filter btn btn-sm btn-active" data-tag="all">All</button>
     {
       allTags.map((tag) => (
-        <button class="tag-filter btn btn-dash btn-sm" data-tag={tag}>
+        <button class="tag-filter btn btn-sm" data-tag={tag}>
           {tag}
         </button>
       ))
@@ -84,32 +83,76 @@ const allTags = [
   <CallToAction />
 </Layout>
 
-<script>
-  // Client-side script for filtering projects by tags
-  document.addEventListener("DOMContentLoaded", () => {
+<script is:inline>
+  // Function to initialize and set up project tag filtering
+  function initProjectFiltering() {
     const filterButtons = document.querySelectorAll(".tag-filter");
     const projectCards = document.querySelectorAll(".project-card");
+
+    // Reset any previous active state that might have been preserved
+    const activeTag = sessionStorage.getItem("activeProjectTag") || "all";
+
+    // First remove active class from all buttons
+    filterButtons.forEach((btn) => btn.classList.remove("btn-active"));
+
+    // Then find and activate the correct button
+    const buttonToActivate = Array.from(filterButtons).find(
+      (btn) => btn.getAttribute("data-tag") === activeTag
+    );
+
+    if (buttonToActivate) {
+      buttonToActivate.classList.add("btn-active");
+
+      // Apply the filtering based on the stored tag
+      applyTagFilter(activeTag, projectCards);
+    } else {
+      // If no matching button (unlikely), activate "All"
+      const allButton = Array.from(filterButtons).find(
+        (btn) => btn.getAttribute("data-tag") === "all"
+      );
+      if (allButton) {
+        allButton.classList.add("btn-active");
+      }
+    }
 
     // Add click event listener to each filter button
     filterButtons.forEach((button) => {
       button.addEventListener("click", () => {
         const selectedTag = button.getAttribute("data-tag") || "all";
 
+        // Store the active tag in sessionStorage for persistence across view transitions
+        sessionStorage.setItem("activeProjectTag", selectedTag);
+
         // Update active button styles
         filterButtons.forEach((btn) => btn.classList.remove("btn-active"));
         button.classList.add("btn-active");
 
-        // Filter the projects using Tailwind classes
-        projectCards.forEach((card) => {
-          const cardTags = card.getAttribute("data-tags")?.split(",") || [];
-
-          if (selectedTag === "all" || cardTags.includes(selectedTag)) {
-            card.classList.remove("hidden");
-          } else {
-            card.classList.add("hidden");
-          }
-        });
+        // Apply the filtering
+        applyTagFilter(selectedTag, projectCards);
       });
     });
-  });
+  }
+
+  /**
+   * Apply filtering based on selected tag
+   * @param {string} selectedTag - The tag to filter by
+   * @param {NodeListOf<Element>} projectCards - Collection of project card elements
+   */
+  function applyTagFilter(selectedTag, projectCards) {
+    projectCards.forEach((card) => {
+      const cardTags = card.getAttribute("data-tags")?.split(",") || [];
+
+      if (selectedTag === "all" || cardTags.includes(selectedTag)) {
+        card.classList.remove("hidden");
+      } else {
+        card.classList.add("hidden");
+      }
+    });
+  }
+
+  // Initialize on first page load
+  document.addEventListener("DOMContentLoaded", initProjectFiltering);
+
+  // Re-initialize after view transitions
+  document.addEventListener("astro:page-load", initProjectFiltering);
 </script>
