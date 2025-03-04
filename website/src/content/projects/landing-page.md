@@ -28,6 +28,8 @@ The most popular framework that offered both easy content management and client 
 
 In recent years, server-side rendering has been making a return (thanks to [Next.js](https://nextjs.org/)). As a response, React added [server components](https://react.dev/reference/rsc/server-components), which Gatsby uses to introduce [partial hydration](https://www.gatsbyjs.com/docs/conceptual/partial-hydration). While this is great for those that are already in the React ecosystem, I happen to not like React and its programming model very much. Still in the early days of my web development journey, I want to experiment with different approaches to web development, and Astro's flexible integration with all kinds of front-end framework is a much needed feature for me.
 
+For a more detailed take on how JavaScript has evolved, visit Allan Pike's [blog on the topic](https://allenpike.com/2025/javascript-fatigue-ssr?).
+
 ### TailwindCSS
 
 [TailwindCSS](https://tailwindcss.com/) has become a main-stay in the web development circle for styling applications.
