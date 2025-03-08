@@ -18,6 +18,7 @@
     "npm:@astrojs/svelte@^7.0.5": "7.0.5_astro@5.4.2__vite@6.2.0__zod@3.24.2_svelte@5.22.5__acorn@8.14.1_typescript@5.8.2_vite@6.2.0__lightningcss@1.29.2",
     "npm:@tailwindcss/typography@~0.5.16": "0.5.16_tailwindcss@4.0.11",
     "npm:@tailwindcss/vite@^4.0.11": "4.0.11_vite@6.2.0__lightningcss@1.29.2_lightningcss@1.29.2",
+    "npm:astro@5.4.2": "5.4.2_vite@6.2.0_zod@3.24.2",
     "npm:astro@^5.4.2": "5.4.2_vite@6.2.0_zod@3.24.2",
     "npm:daisyui@5": "5.0.0",
     "npm:preact@^10.26.4": "10.26.4",
@@ -909,7 +910,7 @@
         "shiki",
         "tinyexec",
         "tinyglobby",
-        "tsconfck",
+        "tsconfck@3.1.5_typescript@5.8.2",
         "ultrahtml",
         "unist-util-visit",
         "unstorage",
@@ -974,7 +975,7 @@
         "shiki",
         "tinyexec",
         "tinyglobby",
-        "tsconfck",
+        "tsconfck@3.1.5",
         "ultrahtml",
         "unist-util-visit",
         "unstorage",
@@ -2580,6 +2581,9 @@
     },
     "trough@2.2.0": {
       "integrity": "sha512-tmMpK00BjZiUyVyvrBK7knerNgmgvcV/KLVyuma/SC+TQN167GrMRciANTz09+k3zW8L8t60jWO1GpfkZdjTaw=="
+    },
+    "tsconfck@3.1.5": {
+      "integrity": "sha512-CLDfGgUp7XPswWnezWwsCRxNmgQjhYq3VXHM0/XIRxhVrKw0M1if9agzryh1QS3nxjCROvV+xWxoJO1YctzzWg=="
     },
     "tsconfck@3.1.5_typescript@5.8.2": {
       "integrity": "sha512-CLDfGgUp7XPswWnezWwsCRxNmgQjhYq3VXHM0/XIRxhVrKw0M1if9agzryh1QS3nxjCROvV+xWxoJO1YctzzWg==",
