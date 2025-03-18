@@ -10,12 +10,12 @@
     "@std/http": "jsr:@std/http@^1.0.13",
     "@astrojs/svelte": "npm:@astrojs/svelte@^7.0.6",
     "@tailwindcss/typography": "npm:@tailwindcss/typography@^0.5.16",
-    "@tailwindcss/vite": "npm:@tailwindcss/vite@^4.0.13",
-    "astro": "npm:astro@^5.4.3",
-    "daisyui": "npm:daisyui@^5.0.2",
+    "@tailwindcss/vite": "npm:@tailwindcss/vite@^4.0.14",
+    "astro": "npm:astro@^5.5.2",
+    "daisyui": "npm:daisyui@^5.0.6",
     "sharp": "npm:sharp@^0.33.5",
-    "svelte": "npm:svelte@^5.23.0",
-    "tailwindcss": "npm:tailwindcss@^4.0.13"
+    "svelte": "npm:svelte@^5.23.1",
+    "tailwindcss": "npm:tailwindcss@^4.0.14"
   },
   "compilerOptions": {
     "types": [".astro/content.d.ts"]
