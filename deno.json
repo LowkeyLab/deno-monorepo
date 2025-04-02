@@ -1,4 +1,4 @@
 {
-  "workspace": ["./astro-tutorial", "./aoc-24", "./website"],
+  "workspace": ["./astro-tutorial", "./aoc-24"],
   "nodeModulesDir": "auto"
 }
